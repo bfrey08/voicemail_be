@@ -23,7 +23,10 @@
 /config/master.key
 
 # Ignore simplecov tracking
-echo "coverage" >> .gitignore
+
 
 # Ignore application configuration
 /config/application.yml
+
+# Ignore simplecov tracking
+coverage

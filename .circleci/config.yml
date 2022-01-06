@@ -21,7 +21,7 @@ jobs:
       # learn more: https://circleci.com/docs/2.0/caching/
       - node/install-packages:
           pkg-manager: yarn
-          cache-key: "yarn.lock"
+          cache-key: yarn-packages-{{ checksum "yarn.lock" }}
 
   test:  # our next job, called "test"
     # we run "parallel job containers" to enable speeding up our tests;
@@ -29,7 +29,7 @@ jobs:
     parallelism: 3
     # here we set TWO docker images.
     docker:
-      - image: cimg/ruby:2.7-node # this is our primary docker image, where step commands run.
+      - image: cimg/ruby:2.7.2-node # this is our primary docker image, where step commands run.
         auth:
           username: mydockerhub-user
           password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
@@ -55,7 +55,7 @@ jobs:
       - ruby/install-deps
       - node/install-packages:
           pkg-manager: yarn
-          cache-key: "yarn.lock"
+          cache-key: yarn-packages-{{ checksum "yarn.lock" }}
       # Here we make sure that the secondary container boots
       # up before we run operations on the database.
       - run:

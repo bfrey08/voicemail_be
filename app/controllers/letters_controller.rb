@@ -19,4 +19,6 @@ class LettersController < ApplicationController
                                       )
       LobFacade.create_letter(to_address, from_address)
   end
+  def test_method
+  end 
 end

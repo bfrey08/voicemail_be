@@ -21,7 +21,8 @@ jobs:
       # learn more: https://circleci.com/docs/2.0/caching/
       - node/install-packages:
           pkg-manager: yarn
-          cache-key: yarn-packages-{{ checksum "yarn.lock" }}
+          cache-key:
+            - yarn-packages-{{ checksum "yarn.lock" }}
 
   test:  # our next job, called "test"
     # we run "parallel job containers" to enable speeding up our tests;
@@ -55,7 +56,8 @@ jobs:
       - ruby/install-deps
       - node/install-packages:
           pkg-manager: yarn
-          cache-key: yarn-packages-{{ checksum "yarn.lock" }}
+          cache-key:
+            - yarn-packages-{{ checksum "yarn.lock" }}
       # Here we make sure that the secondary container boots
       # up before we run operations on the database.
       - run:

@@ -1,42 +1,40 @@
 class LobFacade
   def self.create_letter(letter_data)
     lob = LobService.client
-    
 
-              
-    to_address = lob.addresses.create(
-                                      name: "Burger King",
-                                      address_line1: "2110 S Broadway",
-                                      address_city: "Denver",
-                                      address_state: "CO",
-                                      address_country: "US",
-                                      address_zip: 80210
-                                    )
-    from_address = lob.addresses.create(
-                                        name: "Wendy's",
-                                        address_line1: "515 S Broadway",
-                                        address_city: "Denver",
-                                        address_state: "CO",
-                                        address_country: "US",
-                                        address_zip: 80209
-                                      )
+    to_address = lob.addresses.create(letter_data[:to_address])
+    from_address = lob.addresses.create(letter_data[:from_address])
 
-    lob.letters.create(
+    confirmation = lob.letters.create(
                         description: "Test letter",
                         to: to_address["id"],
                         from: from_address["id"],
-                        file: html_formatter(letter_body),
+                        file: html_formatter(letter_data[:letter_body]),
                         merge_variables: { name: 'Albert', event: 'HTML Letter Conference'},
                         metadata: { campaign: 'HTML 1.0' },
                         color: false
                       )
-
+      Letter.create!(
+      to_name: confirmation["to"]["name"],
+      to_street_address_1: confirmation["to"]["address_line_1"],
+      to_street_address_2: confirmation["to"]["address_line_2"],
+      to_city: confirmation["to"]["address_city"],
+      to_state: confirmation["to"]["address_state"],
+      to_zip: confirmation["to"]["address_zip"],
+      from_name: confirmation["from"]["name"],
+      from_street_address_1: confirmation["from"]["address_line_1"],
+      from_street_address_2: confirmation["from"]["address_line_2"],
+      from_city: confirmation["from"]["address_city"],
+      from_state: confirmation["from"]["address_state"],
+      from_zip: confirmation["from"]["address_zip"],
+      body: letter_data[:letter_body]
+    )
   end
 
 
   private
 
-      def html_formatter(letter_body)
+      def self.html_formatter(letter_body)
         html = %{
               <html>
               <head>

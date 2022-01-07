@@ -1,7 +1,43 @@
 class LobFacade
-  def self.create_letter(to_address, from_address)
+  def self.create_letter(letter_data)
+    lob = LobService.client
+    
 
-    html = %{
+              
+    to_address = lob.addresses.create(
+                                      name: "Burger King",
+                                      address_line1: "2110 S Broadway",
+                                      address_city: "Denver",
+                                      address_state: "CO",
+                                      address_country: "US",
+                                      address_zip: 80210
+                                    )
+    from_address = lob.addresses.create(
+                                        name: "Wendy's",
+                                        address_line1: "515 S Broadway",
+                                        address_city: "Denver",
+                                        address_state: "CO",
+                                        address_country: "US",
+                                        address_zip: 80209
+                                      )
+
+    lob.letters.create(
+                        description: "Test letter",
+                        to: to_address["id"],
+                        from: from_address["id"],
+                        file: html_formatter(letter_body),
+                        merge_variables: { name: 'Albert', event: 'HTML Letter Conference'},
+                        metadata: { campaign: 'HTML 1.0' },
+                        color: false
+                      )
+
+  end
+
+
+  private
+
+      def html_formatter(letter_body)
+        html = %{
               <html>
               <head>
               <style>
@@ -28,21 +64,10 @@ class LobFacade
               </style>
               </head>
               <body>
-                <p class="text">Hello {{name}}!<br/><br/>Join us for the {{event}}!</p>
+                <p class="text">"#{letter_body}"</p>
               </body>
               </html>
               }
-
-    lob.letters.create(
-                        description: "Test letter",
-                        to: to_address["id"],
-                        from: from_address["id"],
-                        file: html,
-                        merge_variables: { name: 'Albert', event: 'HTML Letter Conference'},
-                        metadata: { campaign: 'HTML 1.0' },
-                        color: false
-                      )
-
-  end
+      end
 
 end

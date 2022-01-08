@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :user do
     name { Faker::Name.name }
-    email { Faker::Email.email }
+    email { Faker::Internet.email }
     google_id { Faker::Alphanumeric.alphanumeric(number: 15) }
     street_address_1 { Faker::Address.street_address }
     street_address_2 { Faker::Address.secondary_address }

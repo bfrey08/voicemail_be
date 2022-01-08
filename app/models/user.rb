@@ -1,4 +1,5 @@
 class User < ApplicationRecord
   has_many :letters
-  validates :frontend_id, presence: true
+  validates :email, presence: true, uniqueness: true
+  # validates :frontend_id, presence: true
 end

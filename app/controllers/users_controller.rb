@@ -15,7 +15,8 @@ class UsersController < ApplicationController
 
   def update
     user = User.find(params[:id])
-    render json: UserSerializer.new(user.update(address_params))
+    user.update(address_params)
+    render json: UserSerializer.new(user)
   end
 
   private

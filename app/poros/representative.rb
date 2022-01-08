@@ -4,9 +4,8 @@ class Representative
 
   def initialize(rep)
     @name = rep[:name]
-    require 'pry'; binding.pry
-    @street_address_1 = rep[:address][0][:line1]
-    # @address = get_address(rep[:address])
+    # @street_address_1 = rep[:address][0][:line1]
+    @address = full_address(rep[:address])
   end
 
   def full_address(address)

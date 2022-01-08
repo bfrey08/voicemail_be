@@ -14,20 +14,24 @@ class LobFacade
                         metadata: { campaign: 'HTML 1.0' },
                         color: false
                       )
-      Letter.create!(
+                      
+      letter = Letter.create(
+      user_id: letter_data[:user_id],
       to_name: confirmation["to"]["name"],
-      to_street_address_1: confirmation["to"]["address_line_1"],
-      to_street_address_2: confirmation["to"]["address_line_2"],
+      to_street_address_1: confirmation["to"]["address_line1"],
+      to_street_address_2: confirmation["to"]["address_line2"],
       to_city: confirmation["to"]["address_city"],
       to_state: confirmation["to"]["address_state"],
       to_zip: confirmation["to"]["address_zip"],
       from_name: confirmation["from"]["name"],
-      from_street_address_1: confirmation["from"]["address_line_1"],
-      from_street_address_2: confirmation["from"]["address_line_2"],
+      from_street_address_1: confirmation["from"]["address_line1"],
+      from_street_address_2: confirmation["from"]["address_line2"],
       from_city: confirmation["from"]["address_city"],
       from_state: confirmation["from"]["address_state"],
       from_zip: confirmation["from"]["address_zip"],
-      body: letter_data[:letter_body]
+      body: letter_data[:letter_body],
+      send_date: confirmation["send_date"][0..9],
+      delivery_date: confirmation["expected_delivery_date"]
     )
   end
 

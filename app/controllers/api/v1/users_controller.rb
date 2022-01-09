@@ -1,4 +1,6 @@
 class Api::V1::UsersController < ApplicationController
+  include ExceptionHandler
+
   def create
     user = User.find_by(email: params[:email])
 

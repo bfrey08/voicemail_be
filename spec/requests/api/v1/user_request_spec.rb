@@ -22,6 +22,16 @@ describe 'User Requests' do
       expect(attributes[:address_state]).to eq user.address_state
       expect(attributes[:address_zip]).to eq user.address_zip
     end
+
+    it 'returns an error if the user is not found' do
+      create(:user)
+
+      get "/api/v1/users/#{User.all.last.id + 1}"
+
+      expect(response).to have_http_status 404
+
+      expect(response.body).to match(/Couldn't find User/)
+    end
   end
 
   describe 'post /users' do
@@ -100,6 +110,16 @@ describe 'User Requests' do
       expect(attributes[:address_city]).to eq user.address_city
       expect(attributes[:address_state]).to eq user.address_state
       expect(attributes[:address_zip]).to eq user.address_zip
+    end
+
+    it 'returns an error if the user is not found' do
+      create(:user)
+
+      patch "/api/v1/users/#{User.all.last.id + 1}"
+
+      expect(response).to have_http_status 404
+
+      expect(response.body).to match(/Couldn't find User/)
     end
   end
 end

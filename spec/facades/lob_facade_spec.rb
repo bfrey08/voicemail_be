@@ -12,9 +12,9 @@ describe LobFacade do
                     zip_code: 80209
                   )
         letter_body = "
-                        Senator Michael Bennet,
-                        Please make GrubHub free.
-                        Your constituent,
+                        Senator Michael Bennet,<br><br>
+                        Please make GrubHub free.<br><br>
+                        Your constituent, <br>
                         Nate
                         "
 
@@ -43,9 +43,9 @@ describe LobFacade do
         expect(letter.send_date).not_to be nil
         expect(letter.delivery_date).not_to be nil
         expect(letter.body).to eq("
-                        Senator Michael Bennet,
-                        Please make GrubHub free.
-                        Your constituent,
+                        Senator Michael Bennet,<br><br>
+                        Please make GrubHub free.<br><br>
+                        Your constituent, <br>
                         Nate
                         ")
       end

@@ -18,7 +18,7 @@ describe LobFacade do
                     address_city: "Denver",
                     address_state: "CO",
                     address_country: "US",
-                    address_zip: 80210
+                    address_zip: "80210"
                    }
 
       from_address = {
@@ -53,7 +53,7 @@ describe LobFacade do
                     address_city: "Denver",
                     address_state: "CO",
                     address_country: "US",
-                    address_zip: 80210
+                    address_zip: "80210"
                    }
 
       from_address = {
@@ -66,7 +66,7 @@ describe LobFacade do
                      }
 
         letter = LobFacade.create_letter({to_address: to_address, from_address: from_address, user: nate})
-
+        
         expect(letter.id).to be nil
         expect(letter.errors.messages[:body]).to eq(["can't be blank"])
       end

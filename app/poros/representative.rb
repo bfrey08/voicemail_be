@@ -17,4 +17,8 @@ class Representative
   def set_id(integer)
     @id = integer
   end
+
+  def add_title(title)
+    @name = "#{title} #{@name}"
+  end
 end

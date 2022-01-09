@@ -16,4 +16,11 @@ class LetterSerializer
              :user_id,
              :to_name,
              :from_name
+
+   def self.errors(errors)
+     {
+       "message": "Your letter could not be sent.",
+       "errors": errors
+     }
+   end
 end

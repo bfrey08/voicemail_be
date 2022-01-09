@@ -9,7 +9,11 @@ class Api::V1::LettersController < ApplicationController
                                     }
                                   )
 
-    render json: LetterSerializer.new(letter)
+    if letter.id == nil
+      render json: LetterSerializer.errors(letter.errors.full_messages), status: 422
+    else
+      render json: LetterSerializer.new(letter)
+    end
   end
 
 private

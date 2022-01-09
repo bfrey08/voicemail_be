@@ -80,7 +80,7 @@ describe 'User Requests' do
 
       patch "/users/#{user.id}", params: address_params
 
-      user = User.find(user.id)
+      user.reload
 
       expect(user.street_address_1).to eq '123 test st'
       expect(user.street_address_2).to eq 'apt 1'

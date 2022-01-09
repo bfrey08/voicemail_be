@@ -2,7 +2,8 @@ require 'rails_helper'
 
 describe 'Representatives API' do
   it 'can retrieve a list of representatives when given an address in a query param' do
-    get '/api/v1/representatives?address=1551 Utica Street, Denver, CO 80204'
+    user = create(:user)
+    get "/api/v1/users/#{user.id}/representatives"
 
     representatives = JSON.parse(response.body, symbolize_names: true)
 

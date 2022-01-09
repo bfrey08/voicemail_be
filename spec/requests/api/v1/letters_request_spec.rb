@@ -52,7 +52,7 @@ describe 'Letters API' do
 
       confirmation = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response).to be_successful
+      expect(response).not_to be_successful
       
       
       expect(confirmation).to have_key(:message)

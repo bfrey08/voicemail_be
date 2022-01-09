@@ -17,24 +17,24 @@ private
     def to_address
       {
                     name: params[:to_name],
-                    address_line1: params[:to_street_address_1],
-                    address_line2: params[:to_street_address_2],
-                    address_city: params[:to_city],
-                    address_state: params[:to_state],
+                    address_line1: params[:to_address_line1],
+                    address_line2: params[:to_address_line2],
+                    address_city: params[:to_address_city],
+                    address_state: params[:to_address_state],
                     address_country: "US",
-                    address_zip: params[:to_zip]
+                    address_zip: params[:to_address_zip]
       }
     end
 
     def from_address
       {
                     name: params[:from_name],
-                    address_line1: params[:from_street_address_1],
-                    address_line2: params[:from_street_address_2],
-                    address_city: params[:from_city],
-                    address_state: params[:from_state],
+                    address_line1: params[:from_address_line1],
+                    address_line2: params[:from_address_line2],
+                    address_city: params[:from_address_city],
+                    address_state: params[:from_address_state],
                     address_country: "US",
-                    address_zip: params[:from_zip]
+                    address_zip: params[:from_address_zip]
       }
     end
 end

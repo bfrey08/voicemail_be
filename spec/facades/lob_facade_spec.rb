@@ -66,7 +66,7 @@ describe LobFacade do
                      }
 
         letter = LobFacade.create_letter({to_address: to_address, from_address: from_address, user: nate})
-
+        
         expect(letter.id).to be nil
         expect(letter.errors.messages[:body]).to eq(["can't be blank"])
       end

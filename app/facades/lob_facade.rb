@@ -2,9 +2,6 @@ class LobFacade
   def self.create_letter(letter_data)
     lob = LobService.client
 
-    to_address = lob.addresses.create(letter_data[:to_address])
-    from_address = lob.addresses.create(letter_data[:from_address])
-
     letter = Letter.new(
       user_id: letter_data[:user_id],
       to_name: letter_data[:to_address][:name],
@@ -22,6 +19,9 @@ class LobFacade
       body: letter_data[:letter_body]
     )
     if letter.save
+      to_address = lob.addresses.create(letter_data[:to_address])
+      from_address = lob.addresses.create(letter_data[:from_address])
+
       confirmation = lob.letters.create(
                           description: "Test letter",
                           to: to_address["id"],

@@ -42,9 +42,11 @@ describe 'Letters API' do
         expect(confirmation[:data][:attributes][:delivery_date]).to be_a(String)
     end
   end
-  context 'when body attribute is missing' do
+  context 'when required attributes are missing' do
     it "errors out" do
       valid_attributes.delete(:body)
+      valid_attributes.delete(:to_name)
+      valid_attributes.delete(:from_name)
       invalid_attributes = valid_attributes
       post "/api/v1/letters", params: invalid_attributes
 
@@ -56,7 +58,9 @@ describe 'Letters API' do
       expect(confirmation).to have_key(:message)
       expect(confirmation[:message]).to eq("Your letter could not be sent.")
 
-      expect(confirmation[:errors][0]).to eq("Body can't be blank")
+      expect(confirmation[:errors]).to include("Body can't be blank")
+      expect(confirmation[:errors]).to include("To name can't be blank")
+      expect(confirmation[:errors]).to include("From name can't be blank")
     end
   end
 end

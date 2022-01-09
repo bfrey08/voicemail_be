@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 describe Representative do
-  describe 'get_address' do
-    it 'can convert an array of hashes into a string' do
+  describe 'attributes' do
+    it 'can create a representative successfully' do
       rep = Representative.new({name: "John W. Hickenlooper",
       address: [
         {
@@ -15,7 +15,10 @@ describe Representative do
 
       expect(rep.name).to eq('John W. Hickenlooper')
 
-      expect(rep.address).to eq('B85, Washington, DC, 20510')
+      expect(rep.address_line1).to eq('B85')
+      expect(rep.address_city).to eq('Washington')
+      expect(rep.address_state).to eq('DC')
+      expect(rep.address_zip).to eq('20510')
     end
   end
 end

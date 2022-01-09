@@ -1,11 +1,16 @@
 class Representative
   attr_reader :name,
-              :address
+              :address_line1,
+              :address_city,
+              :address_state,
+              :address_zip 
 
   def initialize(rep)
     @name = rep[:name]
-    # @street_address_1 = rep[:address][0][:line1]
-    @address = full_address(rep[:address])
+    @address_line1 = rep[:address][0][:line1]
+    @address_city  = rep[:address][0][:city]
+    @address_state = rep[:address][0][:state]
+    @address_zip   = rep[:address][0][:zip]
   end
 
   def full_address(address)

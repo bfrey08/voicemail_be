@@ -3,6 +3,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       post '/letters', to: 'letters#create'
       get '/representatives', to: 'representatives#index'
+      resources :users, only: [:create, :update, :show]
     end
   end
+
 end

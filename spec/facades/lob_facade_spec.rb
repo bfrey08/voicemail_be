@@ -4,13 +4,7 @@ describe LobFacade do
   describe '.create_letter' do
     context 'when required information entered' do
       it 'sends letter and returns saved letter object' do
-        nate = User.create!(
-                    full_name: "Nate Brown",
-                    street_address_1: "515 S Broadway",
-                    city: "Denver",
-                    state: "CO",
-                    zip_code: 80209
-                  )
+        nate = create(:user)
         letter_body = "
                         Senator Michael Bennet,<br><br>
                         Please make GrubHub free.<br><br>
@@ -28,12 +22,12 @@ describe LobFacade do
                    }
 
       from_address = {
-                      name: nate.full_name,
-                      address_line1: nate.street_address_1,
-                      address_city: nate.city,
-                      address_state: nate.state,
+                      name: nate.name,
+                      address_line1: nate.address_line1,
+                      address_city: nate.address_city,
+                      address_state: nate.address_state,
                       address_country: "US",
-                      address_zip: nate.zip_code
+                      address_zip: nate.address_zip
                      }
 
         letter = LobFacade.create_letter({to_address: to_address, from_address: from_address, letter_body: letter_body, user_id: nate.id})
@@ -52,14 +46,7 @@ describe LobFacade do
     end
     context 'when letter body is not entered (sad path)' do
       it 'returns not-saved letter object with errors' do
-        nate = User.create!(
-                    full_name: "Nate Brown",
-                    street_address_1: "515 S Broadway",
-                    city: "Denver",
-                    state: "CO",
-                    zip_code: 80209
-                  )
-
+        nate = create(:user)
       to_address = {
                     name: "Burger King",
                     address_line1: "2110 S Broadway",
@@ -70,12 +57,12 @@ describe LobFacade do
                    }
 
       from_address = {
-                      name: nate.full_name,
-                      address_line1: nate.street_address_1,
-                      address_city: nate.city,
-                      address_state: nate.state,
+                      name: nate.name,
+                      address_line1: nate.address_line1,
+                      address_city: nate.address_city,
+                      address_state: nate.address_state,
                       address_country: "US",
-                      address_zip: nate.zip_code
+                      address_zip: nate.address_zip
                      }
 
         letter = LobFacade.create_letter({to_address: to_address, from_address: from_address, user: nate})

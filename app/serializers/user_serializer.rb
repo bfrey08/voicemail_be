@@ -1,5 +1,5 @@
 class UserSerializer
   include JSONAPI::Serializer
 
-  attributes :email, :name, :google_id, :street_address_1, :street_address_2, :city, :state, :zip_code
+  attributes :email, :name, :google_id, :address_line1, :address_line2, :address_city, :address_state, :address_zip
 end

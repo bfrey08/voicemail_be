@@ -1,13 +1,7 @@
 require 'rails_helper'
 
 describe 'Letters API' do  
-  let(:nate) do
-    User.create!(full_name: "Nate Brown",
-                    street_address_1: "515 S Broadway",
-                    city: "Denver",
-                    state: "CO",
-                    zip_code: 80209)
-  end
+  let(:nate) { create(:user) }
   let(:valid_attributes) do
      { 
        to_address_line1: "2110 S Broadway",

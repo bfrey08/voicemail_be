@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class Api::V1::UsersController < ApplicationController
   def create
     user = User.find_by(email: params[:email])
 
@@ -26,6 +26,6 @@ class UsersController < ApplicationController
   end
 
   def address_params
-    params.permit(:street_address_1, :street_address_2, :city, :state, :zip_code)
+    params.permit(:address_line1, :address_line2, :address_city, :address_state, :address_zip)
   end
 end

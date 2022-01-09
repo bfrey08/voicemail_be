@@ -18,7 +18,7 @@ describe LobFacade do
                     address_city: "Denver",
                     address_state: "CO",
                     address_country: "US",
-                    address_zip: 80210
+                    address_zip: "80210"
                    }
 
       from_address = {
@@ -53,7 +53,7 @@ describe LobFacade do
                     address_city: "Denver",
                     address_state: "CO",
                     address_country: "US",
-                    address_zip: 80210
+                    address_zip: "80210"
                    }
 
       from_address = {

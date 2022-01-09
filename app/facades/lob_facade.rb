@@ -5,33 +5,38 @@ class LobFacade
     to_address = lob.addresses.create(letter_data[:to_address])
     from_address = lob.addresses.create(letter_data[:from_address])
 
-    confirmation = lob.letters.create(
-                        description: "Test letter",
-                        to: to_address["id"],
-                        from: from_address["id"],
-                        file: html_formatter(letter_data[:letter_body]),
-                        merge_variables: { name: 'Albert', event: 'HTML Letter Conference'},
-                        metadata: { campaign: 'HTML 1.0' },
-                        color: false
-                      )
-      letter = Letter.create(
+    letter = Letter.new(
       user_id: letter_data[:user_id],
-      to_name: confirmation["to"]["name"],
-      to_address_line1: confirmation["to"]["address_line1"],
-      to_address_line2: confirmation["to"]["address_line2"],
-      to_address_city: confirmation["to"]["address_city"],
-      to_address_state: confirmation["to"]["address_state"],
-      to_address_zip: confirmation["to"]["address_zip"],
-      from_name: confirmation["from"]["name"],
-      from_address_line1: confirmation["from"]["address_line1"],
-      from_address_line2: confirmation["from"]["address_line2"],
-      from_address_city: confirmation["from"]["address_city"],
-      from_address_state: confirmation["from"]["address_state"],
-      from_address_zip: confirmation["from"]["address_zip"],
-      body: letter_data[:letter_body],
-      send_date: confirmation["send_date"][0..9],
-      delivery_date: confirmation["expected_delivery_date"]
+      to_name: letter_data[:to_address][:name],
+      to_address_line1: letter_data[:to_address][:address_line1],
+      to_address_line2: letter_data[:to_address][:address_line2],
+      to_address_city: letter_data[:to_address][:address_city],
+      to_address_state: letter_data[:to_address][:address_state],
+      to_address_zip: letter_data[:to_address][:address_zip],
+      from_name: letter_data[:from_address][:name],
+      from_address_line1: letter_data[:from_address][:address_line1],
+      from_address_line2: letter_data[:from_address][:address_line2],
+      from_address_city: letter_data[:from_address][:address_city],
+      from_address_state: letter_data[:from_address][:address_state],
+      from_address_zip: letter_data[:from_address][:address_zip],
+      body: letter_data[:letter_body]
     )
+    if letter.save
+      confirmation = lob.letters.create(
+                          description: "Test letter",
+                          to: to_address["id"],
+                          from: from_address["id"],
+                          file: html_formatter(letter_data[:letter_body]),
+                          merge_variables: { name: 'Albert', event: 'HTML Letter Conference'},
+                          metadata: { campaign: 'HTML 1.0' },
+                          color: false
+                        )
+       letter.update(
+         send_date: confirmation["send_date"][0..9],
+         delivery_date: confirmation["expected_delivery_date"]
+      )
+    end
+    letter
   end
 
 

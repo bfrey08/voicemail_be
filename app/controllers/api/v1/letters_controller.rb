@@ -8,8 +8,12 @@ class Api::V1::LettersController < ApplicationController
                                       user_id: params[:user_id]
                                     }
                                   )
-
-    render json: LetterSerializer.new(letter)
+                                  
+    if letter.id == nil
+      render json: LetterSerializer.errors(letter.errors.full_messages)
+    else
+      render json: LetterSerializer.new(letter)
+    end
   end
 
 private

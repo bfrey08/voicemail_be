@@ -10,22 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_07_173844) do
+ActiveRecord::Schema.define(version: 2022_01_09_055037) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "letters", force: :cascade do |t|
-    t.string "to_street_address_1"
-    t.string "to_street_address_2"
-    t.string "to_city"
-    t.string "to_state"
-    t.string "to_zip"
-    t.string "from_street_address_1"
-    t.string "from_street_address_2"
-    t.string "from_city"
-    t.string "from_state"
-    t.string "from_zip"
+    t.string "to_address_line1"
+    t.string "to_address_line2"
+    t.string "to_address_city"
+    t.string "to_address_state"
+    t.string "to_address_zip"
+    t.string "from_address_line1"
+    t.string "from_address_line2"
+    t.string "from_address_city"
+    t.string "from_address_state"
+    t.string "from_address_zip"
     t.string "body"
     t.bigint "user_id"
     t.datetime "created_at", null: false

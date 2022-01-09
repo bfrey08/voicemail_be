@@ -1,5 +1,6 @@
 class Representative
-  attr_reader :name,
+  attr_reader :id,
+              :name,
               :address_line1,
               :address_city,
               :address_state,
@@ -12,8 +13,8 @@ class Representative
     @address_state = rep[:address][0][:state]
     @address_zip   = rep[:address][0][:zip]
   end
-
-  def full_address(address)
-    address.first.values.join(', ')
+  
+  def set_id(integer)
+    @id = integer
   end
 end

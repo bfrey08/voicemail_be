@@ -5,14 +5,10 @@ class Api::V1::UsersController < ApplicationController
     user = User.find_by(email: params[:email])
 
     unless user
-      user = User.create(user_params)
+      user = User.create!(user_params)
     end
 
-    unless user.id
-      render json: { error: "Couldn't create User" }, status: 422
-    else
-      render json: UserSerializer.new(user)
-    end
+    render json: UserSerializer.new(user)
   end
 
   def show

@@ -23,4 +23,11 @@ class LetterSerializer
        "errors": errors
      }
    end
+
+   def self.letters_not_found
+      {
+       "message": "Letters not found",
+       "errors": ["No letters with that user id could be found. Check that you entered it correctly"]
+     }
+   end
 end

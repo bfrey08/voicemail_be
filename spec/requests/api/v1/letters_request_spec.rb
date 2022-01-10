@@ -43,7 +43,7 @@ describe 'Letters API' do
     end
   end
   context 'when required attributes are missing' do
-    it "errors out" do
+    it "errors out and does not create a letter" do
       valid_attributes.delete(:body)
       valid_attributes.delete(:to_name)
       valid_attributes.delete(:from_name)
@@ -61,6 +61,69 @@ describe 'Letters API' do
       expect(confirmation[:errors]).to include("Body can't be blank")
       expect(confirmation[:errors]).to include("To name can't be blank")
       expect(confirmation[:errors]).to include("From name can't be blank")
+    end
+  end
+  context 'when letter id is valid' do
+    it 'can delete a letter from database' do
+      letter = create(:letter)
+
+      expect(Letter.count).to eq(1)
+
+      delete api_v1_letter_path(letter)
+
+      expect(response).to be_successful
+
+      expect(Letter.count).to eq(0)
+    end
+  end
+  context 'when letter id is invalid' do
+    it 'errors out' do
+      letter = create(:letter)
+
+      expect(Letter.count).to eq(1)
+
+      delete '/api/v1/letters/invalid_id'
+
+      confirmation = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response).not_to be_successful
+
+      expect(Letter.count).to eq(1)
+      expect(confirmation[:error]).to eq("Couldn't find Letter with 'id'=invalid_id")
+    end
+  end
+
+  context "when valid user's id is used" do
+    it 'can retrieve a users letters (index)' do
+      user = create(:user)
+      create_list(:letter, 5, user: user)
+
+      get api_v1_user_letters_path(user)
+
+      confirmation = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response).to be_successful
+
+      expect(confirmation).to have_key(:data)
+      expect(confirmation[:data].length).to eq(5)
+
+      expect(confirmation[:data].first[:attributes]).to have_key(:body)
+      expect(confirmation[:data].first[:attributes][:body]).to be_a(String)
+    end
+  end
+  context "when invalid user's id is used" do
+    it 'errors out' do
+      user = create(:user)
+      create_list(:letter, 5, user: user)
+
+      get '/api/v1/users/invalid_id/letters'
+
+      confirmation = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response).not_to be_successful
+
+      expect(confirmation[:message]).to eq("Letters not found")
+      expect(confirmation[:errors]).to include("No letters with that user id could be found. Check that you entered it correctly")
     end
   end
 end

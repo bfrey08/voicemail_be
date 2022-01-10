@@ -16,8 +16,22 @@ class Api::V1::LettersController < ApplicationController
     end
   end
 
-private
+  def index 
+    letters = Letter.where(user_id: params[:user_id])
+    if letters.empty?
+      render json: LetterSerializer.letters_not_found, status: 404
+    else
+      render json: LetterSerializer.new(letters)
+    end
+  end
 
+  def destroy
+    letter = Letter.find(params[:id])
+    
+    render json: letter.destroy, status: 204
+  end
+
+private
     def to_address
       {
                     name: params[:to_name],

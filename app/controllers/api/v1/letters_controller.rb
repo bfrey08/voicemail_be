@@ -17,7 +17,9 @@ class Api::V1::LettersController < ApplicationController
   end
 
   def index 
+    letters = Letter.where(user_id: params[:user_id])
 
+    render json: LetterSerializer.new(letters)
   end
 
   def destroy

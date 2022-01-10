@@ -75,4 +75,21 @@ describe 'Letters API' do
 
     expect(Letter.count).to eq(0)
   end
+
+  it 'can retrieve a users letters (index)' do
+    user = create(:user)
+    letters = create_list(:letter, 5, user: user)
+
+    get api_v1_user_letters_path(user)
+
+    confirmation = JSON.parse(response.body, symbolize_names: true)
+
+    expect(response).to be_successful
+
+    expect(confirmation).to have_key(:data)
+    expect(confirmation[:data].length).to eq(5)
+
+    expect(confirmation[:data].first).to have_key(:body)
+    expect(confirmation[:data][:body]).to be_a(String)
+  end
 end

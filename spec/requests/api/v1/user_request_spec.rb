@@ -75,6 +75,14 @@ describe 'User Requests' do
       expect(attributes[:name]).to eq user.name
       expect(attributes[:google_id]).to eq user.google_id
     end
+
+    it 'returns an error if the user cannot be saved' do
+      post '/api/v1/users', params: {}
+
+      expect(response).to have_http_status 422
+
+      expect(response.body).to match(/Couldn't create User/)
+    end
   end
 
   describe 'patch /users/:id' do

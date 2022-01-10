@@ -88,8 +88,8 @@ describe 'Letters API' do
 
     expect(confirmation).to have_key(:data)
     expect(confirmation[:data].length).to eq(5)
-
-    expect(confirmation[:data].first).to have_key(:body)
-    expect(confirmation[:data][:body]).to be_a(String)
+    
+    expect(confirmation[:data].first[:attributes]).to have_key(:body)
+    expect(confirmation[:data].first[:attributes][:body]).to be_a(String)
   end
 end

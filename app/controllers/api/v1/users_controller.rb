@@ -8,7 +8,11 @@ class Api::V1::UsersController < ApplicationController
       user = User.create(user_params)
     end
 
-    render json: UserSerializer.new(user)
+    unless user.id
+      render json: { error: "Couldn't create User" }, status: 422
+    else
+      render json: UserSerializer.new(user)
+    end
   end
 
   def show

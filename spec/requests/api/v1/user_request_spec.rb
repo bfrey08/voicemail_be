@@ -81,7 +81,7 @@ describe 'User Requests' do
 
       expect(response).to have_http_status 422
 
-      expect(response.body).to match(/Couldn't create User/)
+      expect(response.body).to match(/Validation failed: Email can't be blank/)
     end
   end
 

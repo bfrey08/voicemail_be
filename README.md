@@ -34,7 +34,7 @@ This project was based off Turing's consultancy project. More details can be fou
 ### <ins>API Setup</ins>
 1. Set-up Figaro: `bundle exec figaro install`
 2. Navigate to /config/application.yml
-3. Paste following code and replace the following 'YOUR-API-KEY' with a live API key
+3. Paste following code and replace the following 'YOUR-API-KEY' with an active API key
   ```
   LOB_TEST_API_KEY: 'YOUR-API-KEY'
   LOB_LIVE_API_KEY: 'YOUR-API-KEY'
@@ -42,7 +42,7 @@ This project was based off Turing's consultancy project. More details can be fou
   ```
 
 ### <ins>Schema</ins>
-![Schema Screenshot](https://user-images.githubusercontent.com/80985215/141348603-af7bcd77-c679-42e0-ac17-ce362a007abd.png)
+
 
 ### <ins>Project Board</ins>
 [User-Stories](https://trello.com/b/6B39kgSb/consultancy-project)

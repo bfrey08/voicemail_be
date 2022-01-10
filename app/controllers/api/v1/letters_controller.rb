@@ -16,6 +16,14 @@ class Api::V1::LettersController < ApplicationController
     end
   end
 
+  def index 
+
+  end
+
+  def destroy
+    render json: Letter.delete(params[:id]), status: 204
+  end
+
 private
 
     def to_address

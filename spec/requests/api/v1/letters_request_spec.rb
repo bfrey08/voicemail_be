@@ -43,7 +43,7 @@ describe 'Letters API' do
     end
   end
   context 'when required attributes are missing' do
-    it "errors out" do
+    it "errors out and does not create a letter" do
       valid_attributes.delete(:body)
       valid_attributes.delete(:to_name)
       valid_attributes.delete(:from_name)
@@ -62,5 +62,17 @@ describe 'Letters API' do
       expect(confirmation[:errors]).to include("To name can't be blank")
       expect(confirmation[:errors]).to include("From name can't be blank")
     end
+  end
+
+  it 'can delete a letter from database' do
+    letter = create(:letter)
+
+    expect(Letter.count).to eq(1)
+
+    delete api_v1_letter_path(letter)
+
+    expect(response).to be_successful
+
+    expect(Letter.count).to eq(0)
   end
 end

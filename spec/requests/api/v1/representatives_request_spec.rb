@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'Representatives API' do
   it 'can retrieve a list of representatives when given an address in a query param' do
     user = create(:user)
-    get "/api/v1/users/#{user.id}/representatives"
+    get api_v1_user_representatives_path(user)
 
     representatives = JSON.parse(response.body, symbolize_names: true)
 

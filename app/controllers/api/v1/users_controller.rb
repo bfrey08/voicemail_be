@@ -17,8 +17,13 @@ class Api::V1::UsersController < ApplicationController
 
   def update
     user = User.find(params[:id])
-    user.update(address_params)
-    render json: UserSerializer.new(user)
+
+    if LobFacade.verify_address(address_params) == true
+      user.update(address_params)
+      render json: UserSerializer.new(user)
+    else
+      render json: UserSerializer.verification_failed, status: 422
+    end
   end
 
   private

@@ -4,5 +4,6 @@ class RepresentativeSerializer
              :address_line1,
              :address_state,
              :address_zip,
-             :name
+             :name,
+             :title
 end

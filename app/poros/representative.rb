@@ -1,6 +1,7 @@
 class Representative
   attr_reader :id,
               :name,
+              :title,
               :address_line1,
               :address_city,
               :address_state,
@@ -23,7 +24,7 @@ class Representative
   end
 
   def add_title(title)
-    @name = "#{title} #{@name}"
+    @title = title
   end
 
   def format_address(rep)

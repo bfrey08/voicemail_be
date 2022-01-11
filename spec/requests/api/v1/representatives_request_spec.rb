@@ -26,6 +26,9 @@ describe 'Representatives API' do
 
       expect(representative[:attributes]).to have_key(:name)
       expect(representative[:attributes][:name]).to be_a(String)
+
+      expect(representative[:attributes]).to have_key(:title)
+      expect(representative[:attributes][:title]).to be_a(String)
     end
   end
 end

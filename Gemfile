@@ -54,7 +54,8 @@ group :test do
   gem 'faker'
   gem 'database_cleaner'
   gem 'simplecov', require: false
-
+  gem 'webmock'
+  gem 'vcr'
 end
 
 

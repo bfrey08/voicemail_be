@@ -89,22 +89,22 @@ describe 'User Requests' do
     it 'can update the address of a user' do
       user = create(:user)
       address_params = {
-        address_line1: "123 test st",
-        address_line2: 'apt 1',
-        address_city: 'city a',
-        address_state: 'xx',
-        address_zip: '12345-5678'
+        address_line1: "8101 Ralston Rd",
+        address_line2: "",
+        address_city: 'Denver',
+        address_state: 'CO',
+        address_zip: '80002'
        }
 
       patch "/api/v1/users/#{user.id}", params: address_params
 
       user.reload
 
-      expect(user.address_line1).to eq '123 test st'
-      expect(user.address_line2).to eq 'apt 1'
-      expect(user.address_city).to eq 'city a'
-      expect(user.address_state).to eq 'xx'
-      expect(user.address_zip).to eq '12345-5678'
+      expect(user.address_line1).to eq '8101 Ralston Rd'
+      expect(user.address_line2).to eq ''
+      expect(user.address_city).to eq 'Denver'
+      expect(user.address_state).to eq 'CO'
+      expect(user.address_zip).to eq '80002'
 
       body = JSON.parse(response.body, symbolize_names: true)
       attributes = body[:data][:attributes]
@@ -118,6 +118,34 @@ describe 'User Requests' do
       expect(attributes[:address_city]).to eq user.address_city
       expect(attributes[:address_state]).to eq user.address_state
       expect(attributes[:address_zip]).to eq user.address_zip
+    end
+
+    it 'doesnt update the address if the given address is invalid' do
+      user = create(:user)
+      address_params = {
+        address_line1: "kdcspkspzxca",
+        address_line2: "vfdclps",
+        address_city: 'lvcpadslvcpalspac',
+        address_state: 'vk',
+        address_zip: '06432'
+       }
+
+      patch "/api/v1/users/#{user.id}", params: address_params
+
+      user.reload
+
+      expect(user.address_line1).to_not eq 'kdcspkspzxca'
+      expect(user.address_line2).to_not eq 'vfdclps'
+      expect(user.address_city).to_not eq 'lvcpadslvcpalspac'
+      expect(user.address_state).to_not eq 'vk'
+      expect(user.address_zip).to_not eq '06432'
+
+      body = JSON.parse(response.body, symbolize_names: true)
+
+      message = "Address failed to pass verification; please try again."
+
+      expect(body[:message]).to eq(message)
+      expect(response.status).to eq(422)
     end
 
     it 'returns an error if the user is not found' do

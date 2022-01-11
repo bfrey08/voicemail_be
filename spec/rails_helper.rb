@@ -88,4 +88,14 @@ Shoulda::Matchers.configure do |config|
     with.test_framework :rspec
     with.library :rails
   end
+
+  VCR.configure do |config|
+  config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
+  config.hook_into :webmock
+  config.filter_sensitive_data('<google_key>') { ENV['google_key'] }
+  config.filter_sensitive_data('<LOB_TEST_API_KEY>') { ENV['LOB_TEST_API_KEY'] }
+  config.filter_sensitive_data('<LOB_LIVE_API_KEY>') { ENV['LOB_LIVE_API_KEY'] }
+  config.default_cassette_options = { re_record_interval: 1.day }
+  config.configure_rspec_metadata!
+end
 end

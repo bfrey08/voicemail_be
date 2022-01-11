@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'Representatives API' do
-  it 'can retrieve a list of representatives when given an address in a query param' do
+  it 'can retrieve a list of representatives when given an address in a query param', :vcr do
     user = create(:user)
     get api_v1_user_representatives_path(user)
 

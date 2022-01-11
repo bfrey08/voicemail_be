@@ -21,7 +21,7 @@ describe 'Letters API' do
       }
     end
   context 'when valid attributes entered' do
-    it "can create a letter" do
+    it "can create a letter", :vcr do
         post "/api/v1/letters", params: valid_attributes
 
         confirmation = JSON.parse(response.body, symbolize_names: true)

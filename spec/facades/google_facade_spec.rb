@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe GoogleFacade do
   describe 'representatives' do
-    it 'finds all representatives and their addresses' do
+    it 'finds all representatives and their addresses', :vcr do
       user = create(:user)
       representatives = GoogleFacade.representatives(user.id)
    

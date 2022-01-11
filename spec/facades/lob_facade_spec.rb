@@ -31,7 +31,7 @@ describe LobFacade do
 
   describe '.create_letter' do
     context 'when required information entered' do
-      it 'sends letter and returns saved letter object' do
+      it 'sends letter and returns saved letter object', :vcr do
         nate = create(:user)
         letter_body = "
                         Senator Michael Bennet,<br><br>
@@ -73,7 +73,7 @@ describe LobFacade do
       end
     end
     context 'when letter body is not entered (sad path)' do
-      it 'returns not-saved letter object with errors' do
+      it 'returns not-saved letter object with errors', :vcr do
         nate = create(:user)
       to_address = {
                     name: "Burger King",

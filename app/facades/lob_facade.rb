@@ -1,4 +1,18 @@
 class LobFacade
+  def self.verify_address(address)
+    lob = LobService.verification_client
+
+    verification = lob.us_verifications.verify(
+      city: address[:address_city],
+      state: address[:address_state],
+      primary_line: address[:address_line1],
+      secondary_line: address[:address_line2],
+      zip_code: address[:address_zip]
+    )
+
+    verification["deliverability"] == 'deliverable'
+  end
+
   def self.create_letter(letter_data)
     lob = LobService.client
 

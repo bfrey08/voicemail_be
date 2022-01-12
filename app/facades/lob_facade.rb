@@ -45,11 +45,11 @@ class LobFacade
                           metadata: { campaign: 'HTML 1.0' },
                           color: false
                         )
-                        
+
        letter.update(
          send_date: confirmation["send_date"][0..9],
          delivery_date: confirmation["expected_delivery_date"],
-         letter_preview: confirmation["url"]
+         preview_url: confirmation["url"]
       )
     end
     letter

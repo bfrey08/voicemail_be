@@ -86,7 +86,7 @@ describe 'User Requests' do
   end
 
   describe 'patch /users/:id' do
-    it 'can update the address of a user' do
+    it 'can update the address of a user', :vcr do
       user = create(:user)
       address_params = {
         address_line1: "8101 Ralston Rd",
@@ -120,7 +120,7 @@ describe 'User Requests' do
       expect(attributes[:address_zip]).to eq user.address_zip
     end
 
-    it 'doesnt update the address if the given address is invalid' do
+    it 'doesnt update the address if the given address is invalid', :vcr do
       user = create(:user)
       address_params = {
         address_line1: "kdcspkspzxca",

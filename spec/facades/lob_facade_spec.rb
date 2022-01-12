@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe LobFacade do
   describe '.verify_address' do
-    it 'returns true if an address can be delivered to' do
+    it 'returns true if an address can be delivered to', :vcr do
       address = {
         name: "Burger King",
         address_line1: "2110 S Broadway",
@@ -15,7 +15,7 @@ describe LobFacade do
       expect(LobFacade.verify_address(address)).to eq(true)
     end
 
-    it 'returns false if an address cant be delivered to' do
+    it 'returns false if an address cant be delivered to', :vcr do
       address = {
         name: "alspdgfpcalsd",
         address_line1: "vasadcasdgasdg",

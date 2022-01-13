@@ -3,14 +3,17 @@
 
 [![VoiceMail](https://circleci.com/gh/bfrey08/voicemail_be.svg?style=svg)](https://app.circleci.com/pipelines/github/bfrey08/voicemail_be)
 
-#### [VoiceMail Front-End](https://github.com/GregoryJFischer/voicemail_fe)
+#### [VoiceMail App](https://voicemail-fe.herokuapp.com/)
+
+#### [VoiceMail Front-End Repo](https://github.com/GregoryJFischer/voicemail_fe)
 
 ## Table of contents
 - [Overview](#overview)
-- [Setup](#setup)
+- [Project Management](#project-management)
 - [Schema](#schema)
-- [Project Board](#project-board)
-- [API](#api)
+- [Wireframes](#wireframes)
+- [Setup](#setup)
+- [API Setup](#api-setup)
 - [Endpoints](#endpoints)
 - [Technologies](#technologies)
 - [Contributors](#contributors)
@@ -20,9 +23,22 @@
 # VoiceMail
 Tackling the limitations of emailing legislators to share your opinion. Create a platform for finding, and then meaningfully influencing representatives via physical mail.
 
--Insert completed feature details here-
+This project is based off Turing's consultancy project. More details can be found [here](https://backend.turing.edu/module3/projects/consultancy/project_goals)
 
-This project was based off Turing's consultancy project. More details can be found [here](https://backend.turing.edu/module3/projects/consultancy/project_goals)
+### <ins>Project Management</ins>
+- [User Stories](https://trello.com/b/6B39kgSb/consultancy-project)
+- [Project Board](https://miro.com/app/board/uXjVOYZzr3U=/)
+
+### <ins>Schema</ins>
+![Schema Screenshot]()
+
+### <ins>Wireframes</ins>
+![Home Page](https://user-images.githubusercontent.com/81711519/149392897-c85a338a-bb31-4cd7-a6ce-b3f75866d906.png)
+![Registration](https://user-images.githubusercontent.com/81711519/149393040-a7393698-6373-47ae-95c7-33ffb45ed91b.png)
+![User Dashboard](https://user-images.githubusercontent.com/81711519/149393114-7f77a51d-e134-4313-81a8-ac57c4f2cb8c.png)
+![Edit_New Letter](https://user-images.githubusercontent.com/81711519/149392936-799abc1d-010b-492a-9858-93ce8e98d2ef.png)
+![Pending Letter Show](https://user-images.githubusercontent.com/81711519/149392946-6557925c-c508-4aad-8fb4-44832c733950.png)
+![Sent Letter Show](https://user-images.githubusercontent.com/81711519/149393100-bfe8b1de-ebed-4789-9c67-0a42ac3cc24e.png)
 
 ### <ins>Setup</ins>
 1. Fork and Clone the repo
@@ -34,20 +50,15 @@ This project was based off Turing's consultancy project. More details can be fou
 ### <ins>API Setup</ins>
 1. Set-up Figaro: `bundle exec figaro install`
 2. Navigate to /config/application.yml
-3. Paste following code and replace the following 'YOUR-API-KEY' with a live API key
+3. Paste the following code and replace 'YOUR-API-KEY' with your respective API keys:
   ```
   LOB_TEST_API_KEY: 'YOUR-API-KEY'
   LOB_LIVE_API_KEY: 'YOUR-API-KEY'
   google_key: 'YOUR-API-KEY'
   ```
 
-### <ins>Schema</ins>
-![Schema Screenshot](https://user-images.githubusercontent.com/80985215/141348603-af7bcd77-c679-42e0-ac17-ce362a007abd.png)
-
-### <ins>Project Board</ins>
-[User-Stories](https://trello.com/b/6B39kgSb/consultancy-project)
-
 ### <ins>Endpoints</ins>
+[Endpoints](https://github.com/bfrey08/voicemail_be/blob/main/endpoints.md)
 
 ### <ins>Technologies</ins>
 
@@ -63,7 +74,6 @@ This project was based off Turing's consultancy project. More details can be fou
 ![Markdown][Markdown-img]
 ![PostgreSQL][PostgreSQL-img]
 ![Postman][Postman-img]
-![Rubocop][Rubocop-img]
 ![Ruby on Rails][Ruby on Rails-img]
 
 #### Languages

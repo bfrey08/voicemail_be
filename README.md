@@ -3,7 +3,7 @@
 
 [![VoiceMail](https://circleci.com/gh/bfrey08/voicemail_be.svg?style=svg)](https://app.circleci.com/pipelines/github/bfrey08/voicemail_be)
 
-#### [VoiceMail App](https://voicemail-fe.herokuapp.com/)
+#### [VoiceMail App](https://voicemail-fe.herokuapp.com)
 
 #### [VoiceMail Front-End Repo](https://github.com/GregoryJFischer/voicemail_fe)
 
@@ -30,7 +30,7 @@ This project is based off Turing's consultancy project. More details can be foun
 - [Project Board](https://miro.com/app/board/uXjVOYZzr3U=/)
 
 ### <ins>Schema</ins>
-![Schema Screenshot]()
+<img width="835" alt="be_schema" src="https://user-images.githubusercontent.com/81711519/149423165-1335a3e4-547d-4d80-9a55-8da09127df0a.png">
 
 ### <ins>Wireframes</ins>
 ![Home Page](https://user-images.githubusercontent.com/81711519/149392897-c85a338a-bb31-4cd7-a6ce-b3f75866d906.png)

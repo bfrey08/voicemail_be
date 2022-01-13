@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_09_191424) do
+ActiveRecord::Schema.define(version: 2022_01_12_235210) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2022_01_09_191424) do
     t.string "from_name"
     t.string "delivery_date"
     t.string "send_date"
+    t.string "preview_url"
     t.index ["user_id"], name: "index_letters_on_user_id"
   end
 

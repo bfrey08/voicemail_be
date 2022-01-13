@@ -33,11 +33,11 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Rate-Limit-Remaining:
-      - '299'
+      - '298'
       X-Rate-Limit-Limit:
       - '300'
       X-Rate-Limit-Reset:
-      - '1642006909'
+      - '1642031230'
       Access-Control-Allow-Credentials:
       - 'true'
       Access-Control-Expose-Headers:
@@ -47,7 +47,7 @@ http_interactions:
       Accept-Ranges:
       - bytes
       Date:
-      - Wed, 12 Jan 2022 17:01:44 GMT
+      - Wed, 12 Jan 2022 23:47:06 GMT
       Vary:
       - origin,accept-encoding
       Strict-Transport-Security:
@@ -58,7 +58,7 @@ http_interactions:
       encoding: ASCII-8BIT
       string: |-
         {
-            "id": "us_ver_2d2f98c8ae22470aba59",
+            "id": "us_ver_98016e6d50534d16a0dd",
             "recipient": "",
             "primary_line": "VASADCASDGASDG",
             "secondary_line": "",
@@ -113,5 +113,5 @@ http_interactions:
             },
             "object": "us_verification"
         }
-  recorded_at: Wed, 12 Jan 2022 17:01:44 GMT
+  recorded_at: Wed, 12 Jan 2022 23:47:06 GMT
 recorded_with: VCR 6.0.0

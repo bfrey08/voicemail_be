@@ -40,6 +40,9 @@ describe 'Letters API' do
 
         expect(confirmation[:data][:attributes]).to have_key(:delivery_date)
         expect(confirmation[:data][:attributes][:delivery_date]).to be_a(String)
+
+        expect(confirmation[:data][:attributes]).to have_key(:preview_url)
+        expect(confirmation[:data][:attributes][:preview_url]).to be_a(String)
     end
   end
   context 'when required attributes are missing' do

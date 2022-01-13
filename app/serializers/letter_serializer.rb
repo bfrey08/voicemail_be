@@ -15,7 +15,8 @@ class LetterSerializer
              :body,
              :user_id,
              :to_name,
-             :from_name
+             :from_name,
+             :preview_url
 
    def self.errors(errors)
      {

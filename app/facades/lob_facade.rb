@@ -50,7 +50,6 @@ class LobFacade
          delivery_date: confirmation["expected_delivery_date"],
          preview_url: confirmation["url"]
       )
-      require 'pry'; binding.pry
     end
     letter
   end

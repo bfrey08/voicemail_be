@@ -48,9 +48,10 @@ This project is based off Turing's consultancy project. More details can be foun
 4. Run `bundle exec rspec` to test
 
 ### <ins>API Setup</ins>
-1. Set-up Figaro: `bundle exec figaro install`
-2. Navigate to /config/application.yml
-3. Paste the following code and replace 'YOUR-API-KEY' with your respective API keys:
+1. Sign up for your Lob Live/Test API keys [here](https://docs.lob.com/#section/API-Keys) and Google Civic Information API key [here](https://console.developers.google.com/apis/credentials)
+2. Set-up Figaro: `bundle exec figaro install`
+3. Navigate to /config/application.yml
+4. Paste the following code and replace 'YOUR-API-KEY' with your Lob keys and Google Civic Information API key:
   ```
   LOB_TEST_API_KEY: 'YOUR-API-KEY'
   LOB_LIVE_API_KEY: 'YOUR-API-KEY'

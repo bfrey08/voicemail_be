@@ -1,7 +1,7 @@
 class GoogleService
   def self.find_representatives(address)
     content = conn.get("?key=#{ENV['google_key']}&address=#{address}")
-    representatives = parse_response(content)
+    parse_response(content)
   end
 
   def self.parse_response(response)

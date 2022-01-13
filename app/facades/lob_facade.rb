@@ -45,7 +45,6 @@ class LobFacade
                           metadata: { campaign: 'HTML 1.0' },
                           color: false
                         )
-
        letter.update(
          send_date: confirmation["send_date"][0..9],
          delivery_date: confirmation["expected_delivery_date"],
@@ -59,6 +58,8 @@ class LobFacade
   private
 
       def self.html_formatter(letter_body)
+        letter_body.gsub!("\r\n", "<br>")
+
         html = %{
               <html>
 

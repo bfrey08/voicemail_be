@@ -27,7 +27,7 @@ describe 'Letters API' do
         confirmation = JSON.parse(response.body, symbolize_names: true)
 
         expect(response).to be_successful
-        require 'pry'; binding.pry
+
         expect(confirmation[:data]).to have_key(:id)
         expect(confirmation[:data][:id]).to be_a(String)
 

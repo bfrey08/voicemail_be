@@ -58,7 +58,7 @@ class LobFacade
   private
 
       def self.html_formatter(letter_body)
-        letter_body.gsub!("\r\n", "<br>")
+        letter_body.gsub!("\n", "<br>")
 
         html = %{
               <html>

@@ -73,7 +73,7 @@ describe 'Letters API' do
       expect(Letter.count).to eq(1)
 
       delete api_v1_letter_path(letter)
-
+      require 'pry'; binding.pry
       expect(response).to be_successful
 
       expect(Letter.count).to eq(0)

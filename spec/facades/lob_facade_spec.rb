@@ -4,12 +4,12 @@ describe LobFacade do
   describe '.verify_address' do
     it 'returns true if an address can be delivered to', :vcr do
       address = {
-        name: "Burger King",
-        address_line1: "2110 S Broadway",
-        address_city: "Denver",
-        address_state: "CO",
-        address_country: "US",
-        address_zip: "80210"
+        name: 'Burger King',
+        address_line1: '2110 S Broadway',
+        address_city: 'Denver',
+        address_state: 'CO',
+        address_country: 'US',
+        address_zip: '80210'
       }
 
       expect(LobFacade.verify_address(address)).to eq(true)
@@ -17,12 +17,12 @@ describe LobFacade do
 
     it 'returns false if an address cant be delivered to', :vcr do
       address = {
-        name: "alspdgfpcalsd",
-        address_line1: "vasadcasdgasdg",
-        address_city: "sadmvodmc",
-        address_state: "pwefoqckds",
-        address_country: "kaosdvkospck",
-        address_zip: "43951"
+        name: 'alspdgfpcalsd',
+        address_line1: 'vasadcasdgasdg',
+        address_city: 'sadmvodmc',
+        address_state: 'pwefoqckds',
+        address_country: 'kaosdvkospck',
+        address_zip: '43951'
       }
 
       expect(LobFacade.verify_address(address)).to eq(false)
@@ -40,26 +40,26 @@ describe LobFacade do
                         Nate
                         "
 
-      to_address = {
-                    name: "Burger King",
-                    address_line1: "2110 S Broadway",
-                    address_city: "Denver",
-                    address_state: "CO",
-                    address_country: "US",
-                    address_zip: "80210"
-                   }
+        to_address = {
+          name: 'Burger King',
+          address_line1: '2110 S Broadway',
+          address_city: 'Denver',
+          address_state: 'CO',
+          address_country: 'US',
+          address_zip: '80210'
+        }
 
-      from_address = {
-                      name: nate.name,
-                      address_line1: nate.address_line1,
-                      address_city: nate.address_city,
-                      address_state: nate.address_state,
-                      address_country: "US",
-                      address_zip: nate.address_zip
-                     }
+        from_address = {
+          name: nate.name,
+          address_line1: nate.address_line1,
+          address_city: nate.address_city,
+          address_state: nate.address_state,
+          address_country: 'US',
+          address_zip: nate.address_zip
+        }
 
-        letter = LobFacade.create_letter({to_address: to_address, from_address: from_address, letter_body: letter_body, user_id: nate.id})
-
+        letter = LobFacade.create_letter({ to_address: to_address, from_address: from_address, letter_body: letter_body,
+                                           user_id: nate.id })
 
         expect(letter).to be_a(Letter)
         expect(letter.send_date).not_to be nil
@@ -75,25 +75,25 @@ describe LobFacade do
     context 'when letter body is not entered (sad path)' do
       it 'returns not-saved letter object with errors', :vcr do
         nate = create(:user)
-      to_address = {
-                    name: "Burger King",
-                    address_line1: "2110 S Broadway",
-                    address_city: "Denver",
-                    address_state: "CO",
-                    address_country: "US",
-                    address_zip: "80210"
-                   }
+        to_address = {
+          name: 'Burger King',
+          address_line1: '2110 S Broadway',
+          address_city: 'Denver',
+          address_state: 'CO',
+          address_country: 'US',
+          address_zip: '80210'
+        }
 
-      from_address = {
-                      name: nate.name,
-                      address_line1: nate.address_line1,
-                      address_city: nate.address_city,
-                      address_state: nate.address_state,
-                      address_country: "US",
-                      address_zip: nate.address_zip
-                     }
+        from_address = {
+          name: nate.name,
+          address_line1: nate.address_line1,
+          address_city: nate.address_city,
+          address_state: nate.address_state,
+          address_country: 'US',
+          address_zip: nate.address_zip
+        }
 
-        letter = LobFacade.create_letter({to_address: to_address, from_address: from_address, user: nate})
+        letter = LobFacade.create_letter({ to_address: to_address, from_address: from_address, user: nate })
 
         expect(letter.id).to be nil
         expect(letter.errors.messages[:body]).to eq(["can't be blank"])

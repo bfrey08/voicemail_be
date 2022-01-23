@@ -12,7 +12,7 @@ describe GoogleService do
       expect(expected[:officials].first[:name]).to be_a(String)
 
       expect(expected[:officials].first[:address]).to be_a(Array)
-      
+
       expect(expected).to have_key(:offices)
       expect(expected[:offices]).to be_a(Array)
       expect(expected[:offices].first).to have_key(:officialIndices)

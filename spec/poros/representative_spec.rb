@@ -3,15 +3,15 @@ require 'rails_helper'
 describe Representative do
   describe 'attributes' do
     it 'can create a representative successfully' do
-      rep = Representative.new({name: "John W. Hickenlooper",
-      address: [
-        {
-          "line1": "B85",
-          "city": "Washington",
-          "state": "DC",
-          "zip": "20510"
-        }
-      ]})
+      rep = Representative.new({ name: 'John W. Hickenlooper',
+                                 address: [
+                                   {
+                                     "line1": 'B85',
+                                     "city": 'Washington',
+                                     "state": 'DC',
+                                     "zip": '20510'
+                                   }
+                                 ] })
 
       expect(rep.name).to eq('John W. Hickenlooper')
 

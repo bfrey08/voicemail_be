@@ -9,6 +9,6 @@ class GoogleService
   end
 
   def self.conn
-    Faraday.new(url: "https://www.googleapis.com/civicinfo/v2/representatives")
+    Faraday.new(url: 'https://www.googleapis.com/civicinfo/v2/representatives')
   end
 end

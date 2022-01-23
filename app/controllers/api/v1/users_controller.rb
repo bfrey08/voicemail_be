@@ -1,12 +1,8 @@
 class Api::V1::UsersController < ApplicationController
-
-
   def create
     user = User.find_by(email: params[:email])
 
-    unless user
-      user = User.create!(user_params)
-    end
+    user ||= User.create!(user_params)
 
     render json: UserSerializer.new(user)
   end

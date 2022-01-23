@@ -10,47 +10,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_12_235210) do
-
+ActiveRecord::Schema.define(version: 20_220_112_235_210) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
-  create_table "letters", force: :cascade do |t|
-    t.string "to_address_line1"
-    t.string "to_address_line2"
-    t.string "to_address_city"
-    t.string "to_address_state"
-    t.string "to_address_zip"
-    t.string "from_address_line1"
-    t.string "from_address_line2"
-    t.string "from_address_city"
-    t.string "from_address_state"
-    t.string "from_address_zip"
-    t.string "body"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "to_name"
-    t.string "from_name"
-    t.string "delivery_date"
-    t.string "send_date"
-    t.string "preview_url"
-    t.index ["user_id"], name: "index_letters_on_user_id"
+  create_table 'letters', force: :cascade do |t|
+    t.string 'to_address_line1'
+    t.string 'to_address_line2'
+    t.string 'to_address_city'
+    t.string 'to_address_state'
+    t.string 'to_address_zip'
+    t.string 'from_address_line1'
+    t.string 'from_address_line2'
+    t.string 'from_address_city'
+    t.string 'from_address_state'
+    t.string 'from_address_zip'
+    t.string 'body'
+    t.bigint 'user_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.string 'to_name'
+    t.string 'from_name'
+    t.string 'delivery_date'
+    t.string 'send_date'
+    t.string 'preview_url'
+    t.index ['user_id'], name: 'index_letters_on_user_id'
   end
 
-  create_table "users", force: :cascade do |t|
-    t.integer "frontend_id"
-    t.string "name"
-    t.string "address_line1"
-    t.string "address_line2"
-    t.string "address_city"
-    t.string "address_state"
-    t.string "address_zip"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "email"
-    t.string "google_id"
+  create_table 'users', force: :cascade do |t|
+    t.integer 'frontend_id'
+    t.string 'name'
+    t.string 'address_line1'
+    t.string 'address_line2'
+    t.string 'address_city'
+    t.string 'address_state'
+    t.string 'address_zip'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.string 'email'
+    t.string 'google_id'
   end
 
-  add_foreign_key "letters", "users"
+  add_foreign_key 'letters', 'users'
 end

@@ -34,14 +34,9 @@ describe 'Letters API' do
       expect(confirmation[:data][:attributes]).to have_key(:to_name)
       expect(confirmation[:data][:attributes][:to_name]).to be_a(String)
 
-      expect(confirmation[:data][:attributes]).to have_key(:send_date)
-      expect(confirmation[:data][:attributes][:send_date]).to be_a(String)
-
-      expect(confirmation[:data][:attributes]).to have_key(:delivery_date)
-      expect(confirmation[:data][:attributes][:delivery_date]).to be_a(String)
-
-      expect(confirmation[:data][:attributes]).to have_key(:preview_url)
-      expect(confirmation[:data][:attributes][:preview_url]).to be_a(String)
+      expect(confirmation[:data][:attributes][:send_date]).to be nil
+      expect(confirmation[:data][:attributes][:delivery_date]).to be nil
+      expect(confirmation[:data][:attributes][:preview_url]).to be nil
     end
   end
   context 'when required attributes are missing' do
@@ -126,5 +121,17 @@ describe 'Letters API' do
       expect(confirmation[:message]).to eq('Letters not found')
       expect(confirmation[:errors]).to include('No letters with that user id could be found. Check that you entered it correctly')
     end
+  end
+  it "can send a letter based on a user's id", :vcr do
+      post '/api/v1/letters', params: valid_attributes
+      post "/api/v1/users/#{nate.id}/letters"
+
+      confirmation = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response).to be_successful
+
+      expect(confirmation[:data][:attributes][:send_date]).not_to be nil
+      expect(confirmation[:data][:attributes][:delivery_date]).not_to be nil
+      expect(confirmation[:data][:attributes][:preview_url]).not_to be nil
   end
 end

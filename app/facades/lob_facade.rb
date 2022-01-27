@@ -14,9 +14,7 @@ class LobFacade
   end
 
   def self.create_letter(letter_data)
-    lob = LobService.client
-
-    letter = Letter.new(
+    letter = Letter.create(
       user_id: letter_data[:user_id],
       to_name: letter_data[:to_address][:name],
       to_address_line1: letter_data[:to_address][:address_line1],
@@ -32,49 +30,38 @@ class LobFacade
       from_address_zip: letter_data[:from_address][:address_zip],
       body: letter_data[:letter_body]
     )
-    if letter.save
-      to_address = lob.addresses.create(letter_data[:to_address])
-      from_address = lob.addresses.create(letter_data[:from_address])
-
-      confirmation = lob.letters.create(
-        description: 'Test letter',
-        to: to_address['id'],
-        from: from_address['id'],
-        file: html_formatter(letter_data[:letter_body]),
-        merge_variables: { name: 'Albert', event: 'HTML Letter Conference' },
-        metadata: { campaign: 'HTML 1.0' },
-        color: false
-      )
-      letter.update(
-        send_date: confirmation['send_date'][0..9],
-        delivery_date: confirmation['expected_delivery_date'],
-        preview_url: confirmation['url']
-      )
-    end
     letter
   end
 
-  def send_letter(letter_data)
-    letter = Letter.find(params[:id])
+  def self.send_letter(user_id)
+    lob = LobService.client
 
+    letter = User.find(user_id).letters.order(:created_at).last
+
+    letter_data = {
+      to_address: {name: letter.to_name, address_line1: letter.to_address_line1, address_city: letter.to_address_city, address_state: letter.to_address_state, address_country: "US", address_zip: letter.to_address_zip},
+      from_address: {name: letter.from_name, address_line1: letter.from_address_line1, address_city: letter.from_address_city, address_state: letter.from_address_state, address_country: "US", address_zip: letter.from_address_zip},
+      letter_body: letter.body,
+      user_id: user_id}
+  
     to_address = lob.addresses.create(letter_data[:to_address])
-      from_address = lob.addresses.create(letter_data[:from_address])
+    from_address = lob.addresses.create(letter_data[:from_address])
 
-      confirmation = lob.letters.create(
-        description: 'Test letter',
-        to: to_address['id'],
-        from: from_address['id'],
-        file: html_formatter(letter_data[:letter_body]),
-        merge_variables: { name: 'Albert', event: 'HTML Letter Conference' },
-        metadata: { campaign: 'HTML 1.0' },
-        color: false
-      )
-      letter.update(
-        send_date: confirmation['send_date'][0..9],
-        delivery_date: confirmation['expected_delivery_date'],
-        preview_url: confirmation['url']
-      )
-      letter
+    confirmation = lob.letters.create(
+      description: 'Test letter',
+      to: to_address['id'],
+      from: from_address['id'],
+      file: html_formatter(letter_data[:letter_body]),
+      merge_variables: { name: 'Albert', event: 'HTML Letter Conference' },
+      metadata: { campaign: 'HTML 1.0' },
+      color: false
+    )
+    letter.update(
+      send_date: confirmation['send_date'][0..9],
+      delivery_date: confirmation['expected_delivery_date'],
+      preview_url: confirmation['url']
+    )
+    letter
   end
 
   def self.preview(letter_data)

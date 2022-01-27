@@ -54,6 +54,29 @@ class LobFacade
     letter
   end
 
+  def send_letter(letter_data)
+    letter = Letter.find(params[:id])
+
+    to_address = lob.addresses.create(letter_data[:to_address])
+      from_address = lob.addresses.create(letter_data[:from_address])
+
+      confirmation = lob.letters.create(
+        description: 'Test letter',
+        to: to_address['id'],
+        from: from_address['id'],
+        file: html_formatter(letter_data[:letter_body]),
+        merge_variables: { name: 'Albert', event: 'HTML Letter Conference' },
+        metadata: { campaign: 'HTML 1.0' },
+        color: false
+      )
+      letter.update(
+        send_date: confirmation['send_date'][0..9],
+        delivery_date: confirmation['expected_delivery_date'],
+        preview_url: confirmation['url']
+      )
+      letter
+  end
+
   def self.preview(letter_data)
     lob = LobService.test_client
 

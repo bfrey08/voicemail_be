@@ -25,7 +25,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Sun, 23 Jan 2022 20:40:22 GMT
+      - Tue, 25 Jan 2022 17:35:22 GMT
       Server:
       - ESF
       Cache-Control:
@@ -394,11 +394,11 @@ http_interactions:
                 {
                   "queryString": "2238 Rayburn House Office Building, Washington, DC 20515-4611",
                   "featureId": {
-                    "cellId": "9923602067032561107",
-                    "fprint": "3004281461341646448"
+                    "cellId": "9923602095821286967",
+                    "fprint": "9836788952556073396"
                   },
-                  "featureType": "typeCompoundBuilding",
-                  "positionPrecisionMeters": 162.19669259570352,
+                  "featureType": "typePostalCode",
+                  "positionPrecisionMeters": 740.42650070101672,
                   "addressUnderstood": false
                 }
               ]
@@ -558,5 +558,5 @@ http_interactions:
             }
           ]
         }
-  recorded_at: Sun, 23 Jan 2022 20:40:22 GMT
+  recorded_at: Tue, 25 Jan 2022 17:35:22 GMT
 recorded_with: VCR 6.0.0

@@ -8,6 +8,4 @@ describe LobService do
     expect(lob).to be_an_instance_of(Lob::Client)
     expect(lob2).to be_an_instance_of(Lob::Client)
   end
-
-
 end

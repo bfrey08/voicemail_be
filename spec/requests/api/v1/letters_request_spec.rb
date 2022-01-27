@@ -124,7 +124,7 @@ describe 'Letters API' do
   end
   it "can send a letter based on a user's id", :vcr do
       post '/api/v1/letters', params: valid_attributes
-      post "/api/v1/users/#{nate.id}/letters"
+      post "/api/v1/letters/send", params: {email: nate.email}
 
       confirmation = JSON.parse(response.body, symbolize_names: true)
 

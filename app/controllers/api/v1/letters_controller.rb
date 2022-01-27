@@ -48,7 +48,7 @@ class Api::V1::LettersController < ApplicationController
   end
 
   def send_letter
-    letter = LobFacade.send_letter(params[:user_id])
+    letter = LobFacade.send_letter(params[:email])
 
     render json: LetterSerializer.new(letter)
   end

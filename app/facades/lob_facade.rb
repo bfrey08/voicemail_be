@@ -33,16 +33,16 @@ class LobFacade
     letter
   end
 
-  def self.send_letter(user_id)
+  def self.send_letter(user_email)
     lob = LobService.client
-
-    letter = User.find(user_id).letters.order(:created_at).last
+    user = User.find_by(email: user_email)
+    letter = user.letters.order(:created_at).last
 
     letter_data = {
       to_address: {name: letter.to_name, address_line1: letter.to_address_line1, address_city: letter.to_address_city, address_state: letter.to_address_state, address_country: "US", address_zip: letter.to_address_zip},
       from_address: {name: letter.from_name, address_line1: letter.from_address_line1, address_city: letter.from_address_city, address_state: letter.from_address_state, address_country: "US", address_zip: letter.from_address_zip},
       letter_body: letter.body,
-      user_id: user_id}
+      user_id: user.id}
   
     to_address = lob.addresses.create(letter_data[:to_address])
     from_address = lob.addresses.create(letter_data[:from_address])

@@ -130,13 +130,13 @@ describe LobFacade do
           address_zip: nate.address_zip
         }
 
-        saved_letter_1 = LobFacade.create_letter({ to_address: to_address, from_address: from_address, letter_body: letter_body,
+        saved_letter_1 = LobFacade.create_letter({ to_address: to_address, from_address: from_address, letter_body: "Hey hey hey",
                                            user_id: nate.id })
 
         saved_letter_2 = LobFacade.create_letter({ to_address: to_address, from_address: from_address, letter_body: letter_body,
                                            user_id: nate.id })
 
-        sent_letter = LobFacade.send_letter(nate.id)
+        sent_letter = LobFacade.send_letter(nate.email)
 
         expect(saved_letter_2.send_date).to be nil
         expect(saved_letter_2.delivery_date).to be nil

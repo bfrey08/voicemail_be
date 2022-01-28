@@ -5,10 +5,13 @@ class Representative
               :address_line1,
               :address_city,
               :address_state,
-              :address_zip
+              :address_zip,
+              :photo_url
 
   def initialize(rep)
     @name = rep[:name]
+    @photo_url = rep[:photoUrl] if rep[:photoUrl]
+    
     if rep[:address]
       @address_line1 = rep[:address][0][:line1]
       @address_city  = rep[:address][0][:city]

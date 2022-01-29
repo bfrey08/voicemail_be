@@ -5,7 +5,7 @@ class UserSerializer
 
   def self.verification_failed
     {
-      "message": "Address failed to pass verification; please try again."
+      "message": 'Address failed to pass verification; please try again.'
     }
   end
 end

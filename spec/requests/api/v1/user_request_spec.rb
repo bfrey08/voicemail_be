@@ -95,7 +95,7 @@ describe 'User Requests' do
       body = JSON.parse(response.body, symbolize_names: true)
       attributes = body[:data][:attributes]
 
-      expect(body[:data][:id]).to eq "#{user.id}"
+      expect(body[:data][:id]).to eq user.id.to_s
       expect(attributes.count).to eq 8
       expect(attributes[:email]).to eq user.email
       expect(attributes[:name]).to eq user.name
@@ -148,12 +148,12 @@ describe 'User Requests' do
     it 'can update the address of a user', :vcr do
       user = create(:user)
       address_params = {
-        address_line1: "8101 Ralston Rd",
-        address_line2: "",
+        address_line1: '8101 Ralston Rd',
+        address_line2: '',
         address_city: 'Denver',
         address_state: 'CO',
         address_zip: '80002'
-       }
+      }
 
       patch "/api/v1/users/#{user.id}", params: address_params
 
@@ -182,12 +182,12 @@ describe 'User Requests' do
     it 'doesnt update the address if the given address is invalid', :vcr do
       user = create(:user)
       address_params = {
-        address_line1: "kdcspkspzxca",
-        address_line2: "vfdclps",
+        address_line1: 'kdcspkspzxca',
+        address_line2: 'vfdclps',
         address_city: 'lvcpadslvcpalspac',
         address_state: 'vk',
         address_zip: '06432'
-       }
+      }
 
       patch "/api/v1/users/#{user.id}", params: address_params
 
@@ -201,7 +201,7 @@ describe 'User Requests' do
 
       body = JSON.parse(response.body, symbolize_names: true)
 
-      message = "Address failed to pass verification; please try again."
+      message = 'Address failed to pass verification; please try again.'
 
       expect(body[:message]).to eq(message)
       expect(response.status).to eq(422)

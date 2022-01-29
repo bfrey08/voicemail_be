@@ -1,7 +1,9 @@
 class GoogleService
   def self.find_representatives(address)
-    content = conn.get("?key=#{ENV['google_key']}&address=#{address}")
-    parse_response(content)
+    Rails.cache.fetch("#{address}_reps", expires_in: 15.days) do
+      content = conn.get("?key=#{ENV['google_key']}&address=#{address}&fields=offices,officials")
+      parse_response(content)
+    end
   end
 
   def self.parse_response(response)
@@ -9,6 +11,6 @@ class GoogleService
   end
 
   def self.conn
-    Faraday.new(url: "https://www.googleapis.com/civicinfo/v2/representatives")
+    Faraday.new(url: 'https://www.googleapis.com/civicinfo/v2/representatives')
   end
 end

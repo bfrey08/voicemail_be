@@ -28,7 +28,7 @@ class Representative
   end
 
   def format_address(rep)
-    unless rep[:geocodingSummaries][0][:queryString].include?('P.O. Box')
+    unless rep[:geocodingSummaries][0][:queryString].include?("P.O. Box")
       address = rep[:geocodingSummaries][0][:queryString].split(", ")
       city_zip = address[-1].split(" ")
       address.delete_at(-1)

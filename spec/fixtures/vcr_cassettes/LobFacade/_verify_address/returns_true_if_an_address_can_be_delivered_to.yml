@@ -37,7 +37,7 @@ http_interactions:
       X-Rate-Limit-Limit:
       - '300'
       X-Rate-Limit-Reset:
-      - '1643458681'
+      - '1643478154'
       Access-Control-Allow-Credentials:
       - 'true'
       Access-Control-Expose-Headers:
@@ -47,7 +47,7 @@ http_interactions:
       Accept-Ranges:
       - bytes
       Date:
-      - Sat, 29 Jan 2022 12:17:56 GMT
+      - Sat, 29 Jan 2022 17:42:29 GMT
       Vary:
       - origin,accept-encoding
       Strict-Transport-Security:
@@ -58,7 +58,7 @@ http_interactions:
       encoding: ASCII-8BIT
       string: |-
         {
-            "id": "us_ver_8cc8fcebfef7459dac8d",
+            "id": "us_ver_81cfb92119174457ab8a",
             "recipient": "",
             "primary_line": "2110 S BROADWAY",
             "secondary_line": "",
@@ -113,5 +113,5 @@ http_interactions:
             },
             "object": "us_verification"
         }
-  recorded_at: Sat, 29 Jan 2022 12:17:56 GMT
+  recorded_at: Sat, 29 Jan 2022 17:42:29 GMT
 recorded_with: VCR 6.0.0

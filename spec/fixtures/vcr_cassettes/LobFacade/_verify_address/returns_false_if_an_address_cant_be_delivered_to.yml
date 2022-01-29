@@ -37,7 +37,7 @@ http_interactions:
       X-Rate-Limit-Limit:
       - '300'
       X-Rate-Limit-Reset:
-      - '1643458682'
+      - '1643478154'
       Access-Control-Allow-Credentials:
       - 'true'
       Access-Control-Expose-Headers:
@@ -47,7 +47,7 @@ http_interactions:
       Accept-Ranges:
       - bytes
       Date:
-      - Sat, 29 Jan 2022 12:17:57 GMT
+      - Sat, 29 Jan 2022 17:42:29 GMT
       Vary:
       - origin,accept-encoding
       Strict-Transport-Security:
@@ -58,7 +58,7 @@ http_interactions:
       encoding: ASCII-8BIT
       string: |-
         {
-            "id": "us_ver_2bb41f6a7bf3449bba1e",
+            "id": "us_ver_cc802f3a084d4edd9035",
             "recipient": "",
             "primary_line": "VASADCASDGASDG",
             "secondary_line": "",
@@ -113,5 +113,5 @@ http_interactions:
             },
             "object": "us_verification"
         }
-  recorded_at: Sat, 29 Jan 2022 12:17:57 GMT
+  recorded_at: Sat, 29 Jan 2022 17:42:29 GMT
 recorded_with: VCR 6.0.0

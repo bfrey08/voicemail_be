@@ -37,7 +37,7 @@ http_interactions:
       X-Rate-Limit-Limit:
       - '300'
       X-Rate-Limit-Reset:
-      - '1643458681'
+      - '1643478154'
       Access-Control-Allow-Credentials:
       - 'true'
       Access-Control-Expose-Headers:
@@ -47,7 +47,7 @@ http_interactions:
       Accept-Ranges:
       - bytes
       Date:
-      - Sat, 29 Jan 2022 12:18:00 GMT
+      - Sat, 29 Jan 2022 17:42:32 GMT
       Vary:
       - origin,accept-encoding
       Strict-Transport-Security:
@@ -58,7 +58,7 @@ http_interactions:
       encoding: ASCII-8BIT
       string: |-
         {
-            "id": "us_ver_0bf11c0667484e4192d7",
+            "id": "us_ver_6dd4d67f18d9473b9439",
             "recipient": "",
             "primary_line": "8101 RALSTON RD",
             "secondary_line": "",
@@ -113,5 +113,5 @@ http_interactions:
             },
             "object": "us_verification"
         }
-  recorded_at: Sat, 29 Jan 2022 12:18:00 GMT
+  recorded_at: Sat, 29 Jan 2022 17:42:32 GMT
 recorded_with: VCR 6.0.0

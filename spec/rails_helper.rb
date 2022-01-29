@@ -97,5 +97,6 @@ Shoulda::Matchers.configure do |config|
     config.filter_sensitive_data('<LOB_LIVE_API_KEY>') { ENV['LOB_LIVE_API_KEY'] }
     config.default_cassette_options = { re_record_interval: 1.day }
     config.configure_rspec_metadata!
+    config.default_cassette_options = { :record => :new_episodes }
   end
 end

@@ -5,10 +5,12 @@ class Api::V1::UsersController < ApplicationController
     if user == nil && params[:password] == params[:password_confirmation]
       user = User.create!(user_params)
       render json: UserSerializer.new(user)
-    elsif user
-      render json: UserSerializer.new(user)
-    else
+    elsif user && params[:google_id] == nil
+      render json: { error: 'Email has already been registered'}, status: 422
+    elsif params[:password] != params[:password_confirmation]
       render json: { error: 'Password and confirmation do not match'}, status: 422
+    else
+      render json: UserSerializer.new(user)
     end
   end
 

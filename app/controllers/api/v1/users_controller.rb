@@ -2,11 +2,14 @@ class Api::V1::UsersController < ApplicationController
   def create
     user = User.find_by(email: params[:email])
 
-    unless user
+    if user == nil && params[:password] == params[:password_confirmation]
       user = User.create!(user_params)
+      render json: UserSerializer.new(user)
+    elsif user
+      render json: UserSerializer.new(user)
+    else
+      render json: { error: 'Password and confirmation do not match'}, status: 422
     end
-
-    render json: UserSerializer.new(user)
   end
 
   def show

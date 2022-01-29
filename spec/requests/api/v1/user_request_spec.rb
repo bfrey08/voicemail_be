@@ -61,6 +61,32 @@ describe 'User Requests' do
       expect(attributes[:google_id]).to eq user.google_id
     end
 
+    it 'can create a user with username/password instead of oauth' do
+      user_params = {
+        name: 'Bob Smith',
+        email: 'test@exaple.com',
+        password: 'password',
+        password_confirmation: 'password'
+      }
+
+      post '/api/v1/users', params: user_params
+
+      expect(response).to have_http_status(:success)
+
+      user = User.find_by(email: 'test@exaple.com')
+
+      expect(user.email).to eq 'test@exaple.com'
+      expect(user.name).to eq 'Bob Smith'
+      expect(user.authenticate('password')).to eq user
+
+      body = JSON.parse(response.body, symbolize_names: true)
+      attributes = body[:data][:attributes]
+
+      expect(attributes.count).to eq 8
+      expect(attributes[:email]).to eq user.email
+      expect(attributes[:name]).to eq user.name
+    end
+
     it 'returns the existing user if the user already exists' do
       user = create(:user, email: 'test@example.com')
 
@@ -82,6 +108,21 @@ describe 'User Requests' do
       expect(response).to have_http_status 422
 
       expect(response.body).to match(/Validation failed: Email can't be blank/)
+    end
+
+    it 'returns an error if the password does not match confirmation' do
+      user_params = {
+        name: 'Bob Smith',
+        email: 'test@exaple.com',
+        password: 'password',
+        password_confirmation: 'password1'
+      }
+
+      post '/api/v1/users', params: user_params
+
+      expect(response).to have_http_status(422)
+
+      expect(response.body).to match(/Password and confirmation do not match/)
     end
   end
 

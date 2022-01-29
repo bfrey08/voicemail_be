@@ -1,6 +1,4 @@
 class Api::V1::UsersController < ApplicationController
-
-
   def create
     user = User.find_by(email: params[:email])
 
@@ -29,7 +27,7 @@ class Api::V1::UsersController < ApplicationController
   private
 
   def user_params
-    params.permit(:email, :name, :google_id)
+    params.permit(:email, :name, :password, :password_confirmation, :google_id)
   end
 
   def address_params

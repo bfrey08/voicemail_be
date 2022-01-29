@@ -39,7 +39,7 @@ http_interactions:
       X-Rate-Limit-Limit:
       - '150'
       X-Rate-Limit-Reset:
-      - '1642031231'
+      - '1643458682'
       Access-Control-Allow-Credentials:
       - 'true'
       Access-Control-Expose-Headers:
@@ -49,7 +49,7 @@ http_interactions:
       Accept-Ranges:
       - bytes
       Date:
-      - Wed, 12 Jan 2022 23:47:08 GMT
+      - Sat, 29 Jan 2022 12:17:57 GMT
       Vary:
       - origin
       Strict-Transport-Security:
@@ -58,7 +58,7 @@ http_interactions:
       encoding: UTF-8
       string: |-
         {
-            "id": "adr_14fedfb0bec77e31",
+            "id": "adr_cbbb32154e6c723c",
             "description": null,
             "name": "BURGER KING",
             "company": null,
@@ -71,17 +71,17 @@ http_interactions:
             "address_zip": "80210-4402",
             "address_country": "UNITED STATES",
             "metadata": {},
-            "date_created": "2022-01-12T23:47:08.844Z",
-            "date_modified": "2022-01-12T23:47:08.844Z",
+            "date_created": "2022-01-29T12:17:57.401Z",
+            "date_modified": "2022-01-29T12:17:57.401Z",
             "object": "address"
         }
-  recorded_at: Wed, 12 Jan 2022 23:47:08 GMT
+  recorded_at: Sat, 29 Jan 2022 12:17:57 GMT
 - request:
     method: post
     uri: https://api.lob.com/v1/addresses
     body:
       encoding: UTF-8
-      string: name=Lauren+Hyatt&address_line1=11913+Freedom+Dr&address_city=Reston&address_state=VA&address_country=US&address_zip=20190
+      string: name=Michal+Lehner&address_line1=11913+Freedom+Dr&address_city=Reston&address_state=VA&address_country=US&address_zip=20190
     headers:
       Accept:
       - "*/*"
@@ -90,7 +90,7 @@ http_interactions:
       Lob-Version:
       - ''
       Content-Length:
-      - '122'
+      - '123'
       Content-Type:
       - application/x-www-form-urlencoded
       Accept-Encoding:
@@ -107,7 +107,7 @@ http_interactions:
       Connection:
       - keep-alive
       Content-Length:
-      - '488'
+      - '489'
       Content-Type:
       - application/json; charset=utf-8
       X-Rate-Limit-Remaining:
@@ -115,7 +115,7 @@ http_interactions:
       X-Rate-Limit-Limit:
       - '150'
       X-Rate-Limit-Reset:
-      - '1642031232'
+      - '1643458682'
       Access-Control-Allow-Credentials:
       - 'true'
       Access-Control-Expose-Headers:
@@ -125,7 +125,7 @@ http_interactions:
       Accept-Ranges:
       - bytes
       Date:
-      - Wed, 12 Jan 2022 23:47:09 GMT
+      - Sat, 29 Jan 2022 12:17:57 GMT
       Vary:
       - origin
       Strict-Transport-Security:
@@ -134,9 +134,9 @@ http_interactions:
       encoding: UTF-8
       string: |-
         {
-            "id": "adr_3b6323148c8b81e7",
+            "id": "adr_dd368073f995f5fd",
             "description": null,
-            "name": "LAUREN HYATT",
+            "name": "MICHAL LEHNER",
             "company": null,
             "phone": null,
             "email": null,
@@ -147,17 +147,17 @@ http_interactions:
             "address_zip": "20190-5601",
             "address_country": "UNITED STATES",
             "metadata": {},
-            "date_created": "2022-01-12T23:47:09.303Z",
-            "date_modified": "2022-01-12T23:47:09.303Z",
+            "date_created": "2022-01-29T12:17:57.825Z",
+            "date_modified": "2022-01-29T12:17:57.825Z",
             "object": "address"
         }
-  recorded_at: Wed, 12 Jan 2022 23:47:09 GMT
+  recorded_at: Sat, 29 Jan 2022 12:17:57 GMT
 - request:
     method: post
     uri: https://api.lob.com/v1/letters
     body:
       encoding: UTF-8
-      string: description=Test+letter&to=adr_14fedfb0bec77e31&from=adr_3b6323148c8b81e7&file=%0A++++++++++++++%3Chtml%3E%0A%0A%3Chead%3E%0A++%3Cmeta+charset%3D%22UTF-8%22%3E%0A++%3Clink+href%3D%22https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DTinos%22+rel%3D%22stylesheet%22+type%3D%22text%2Fcss%22%3E%0A++%3Ctitle%3ELetter+to+Representative%3C%2Ftitle%3E%0A++%3Cstyle%3E%0A++++*%2C%0A++++*%3Abefore%2C%0A++++*%3Aafter+%7B%0A++++++-webkit-box-sizing%3A+border-box%3B%0A++++++-moz-box-sizing%3A+border-box%3B%0A++++++box-sizing%3A+border-box%3B%0A++++%7D%0A%0A++++body+%7B%0A++++++width%3A+8.5in%3B%0A++++++height%3A+11in%3B%0A++++++margin%3A+0%3B%0A++++++padding%3A+0%3B%0A++++%7D%0A%0A++++.page+%7B%0A++++++page-break-after%3A+always%3B%0A++++++position%3A+relative%3B%0A++++++width%3A+8.5in%3B%0A++++++height%3A+11in%3B%0A++++%7D%0A%0A++++.page-content+%7B%0A++++++position%3A+absolute%3B%0A++++++width%3A+8.125in%3B%0A++++++height%3A+10.625in%3B%0A++++++left%3A+0.1875in%3B%0A++++++top%3A+0.1875in%3B%0A++++++background-color%3A+rgba%280%2C+0%2C+0%2C+0%29%3B%0A++++%7D%0A%0A++++.text+%7B%0A++++++margin-left%3A+55px%3B%0A++++++margin-right%3A+55px%3B%0A++++++margin-top%3A+300px%3B%0A++++++font-family%3A+%27Tinos%27%3B%0A++++++font-size%3A+10pt%3B%0A++++++line-height%3A+14pt%3B%0A++++%7D%0A%0A++++.red-text+%7B%0A++++++color%3A+red%3B%0A++++%7D%0A%0A++++.date+%7B%0A++++++float%3A+right%3B%0A++++%7D%0A%0A++++%23return-address-window+%7B%0A++++++position%3A+absolute%3B%0A++++++left%3A+.625in%3B%0A++++++top%3A+.5in%3B%0A++++++width%3A+3.25in%3B%0A++++++height%3A+.875in%3B%0A++++++background-color%3A+rgba%28255%2C+0%2C+0%2C+0%29%3B%0A++++%7D%0A%0A++++%23return-address-text+%7B%0A++++++position%3A+absolute%3B%0A++++++left%3A+.07in%3B%0A++++++top%3A+.34in%3B%0A++++++width%3A+2.05in%3B%0A++++++height%3A+.44in%3B%0A++++++font-size%3A+.11in%3B%0A++++%7D%0A++++%2F*+your+main+logo+should+have+dimensions+of+240x224+pixels.+*%2F%0A%0A++++%23main-logo+%7B%0A++++++position%3A+absolute%3B%0A++++++left%3A+542px%3B%0A++++++top%3A+23px%3B%0A++++++width%3A+2in%3B%0A++++++height%3A+.3in%3B%0A++++%7D%0A%0A++++%23recipient-address-window+%7B%0A++++++position%3A+absolute%3B%0A++++++left%3A+.625in%3B%0A++++++top%3A+1.7in%3B%0A++++++width%3A+4in%3B%0A++++++height%3A+1in%3B%0A++++++background-color%3A+rgba%28255%2C+0%2C+0%2C+0%29%3B%0A++++%7D%0A%0A++++%23recipient-address-text+%7B%0A++++++position%3A+absolute%3B%0A++++++left%3A+.07in%3B%0A++++++top%3A+.05in%3B%0A++++++width%3A+2.92in%3B%0A++++++height%3A+.9in%3B%0A++++%7D%0A%0A++++%23white-box+%7B%0A++++++background-color%3A+white%3B%0A++++++width%3A+3.15in%3B%0A++++++height%3A+2in%3B%0A++++++position%3A+absolute%3B%0A++++++left%3A+.6in%3B%0A++++++top%3A+.84in%3B%0A++++%7D%0A++%3C%2Fstyle%3E%0A%3C%2Fhead%3E%0A%0A%3Cbody%3E%0A++%3Cdiv+class%3D%22page%22%3E%0A++++%3Cdiv+class%3D%22page-content%22%3E%0A+++++%3C%21--+%3Cdiv+id%3D%22main-logo%22%3E%3Cimg+src%3D%22https%3A%2F%2Fs3.us-west-2.amazonaws.com%2Fpublic.lob.com%2FLob_For_Good%2Fvoter%2Baccess%2Bprogram%2B%281%29.png%22+width%3D%22240px%22%3E%3C%2Fdiv%3E+--%3E%0A++++++%3Cdiv+class%3D%22text%22%3E%0A++++++++%0A++++++++++++++++++++++++Senator+Michael+Bennet%2C%3Cbr%3E%3Cbr%3E%0A++++++++++++++++++++++++Please+make+GrubHub+free.%3Cbr%3E%3Cbr%3E%0A++++++++++++++++++++++++Your+constituent%2C+%3Cbr%3E%0A++++++++++++++++++++++++Nate%0A++++++++++++++++++++++++%0A++++++%3C%2Fdiv%3E%0A%0A++++++%3C%21--+This+div+represents+a+white+box+which+will+be+printed+on+top+of+all+artwork+to+hold+address+and+barcode+information.+Any+content+provided+underneath+this+area+will+be+covered.+--%3E%0A++++++%3Cdiv+id%3D%22white-box%22%3E%3C%2Fdiv%3E%0A%0A++++++%3Cdiv+id%3D%22return-address-window%22%3E%0A++++++++%3Cdiv+id%3D%22return-address-text%22%3E%0A++++++++%3C%2Fdiv%3E%0A++++++%3C%2Fdiv%3E%0A++++++%3Cdiv+id%3D%22recipient-address-window%22%3E%0A++++++++%3Cdiv+id%3D%22recipient-address-text%22%3E%0A++++++++%3C%2Fdiv%3E%0A++++++%3C%2Fdiv%3E%0A++++%3C%2Fdiv%3E%0A%0A%3C%2Fbody%3E%0A%0A%3C%2Fhtml%3E%0A++++++++++++++&merge_variables=%7B%22name%22%3A%22Albert%22%2C%22event%22%3A%22HTML+Letter+Conference%22%7D&metadata[campaign]=HTML+1.0&color=false
+      string: description=Test+letter&to=adr_cbbb32154e6c723c&from=adr_dd368073f995f5fd&file=%0A++++++++++++++%3Chtml%3E%0A%0A%3Chead%3E%0A++%3Cmeta+charset%3D%22UTF-8%22%3E%0A++%3Clink+href%3D%22https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DTinos%22+rel%3D%22stylesheet%22+type%3D%22text%2Fcss%22%3E%0A++%3Ctitle%3ELetter+to+Representative%3C%2Ftitle%3E%0A++%3Cstyle%3E%0A++++*%2C%0A++++*%3Abefore%2C%0A++++*%3Aafter+%7B%0A++++++-webkit-box-sizing%3A+border-box%3B%0A++++++-moz-box-sizing%3A+border-box%3B%0A++++++box-sizing%3A+border-box%3B%0A++++%7D%0A%0A++++body+%7B%0A++++++width%3A+8.5in%3B%0A++++++height%3A+11in%3B%0A++++++margin%3A+0%3B%0A++++++padding%3A+0%3B%0A++++%7D%0A%0A++++.page+%7B%0A++++++page-break-after%3A+always%3B%0A++++++position%3A+relative%3B%0A++++++width%3A+8.5in%3B%0A++++++height%3A+11in%3B%0A++++%7D%0A%0A++++.page-content+%7B%0A++++++position%3A+absolute%3B%0A++++++width%3A+8.125in%3B%0A++++++height%3A+10.625in%3B%0A++++++left%3A+0.1875in%3B%0A++++++top%3A+0.1875in%3B%0A++++++background-color%3A+rgba%280%2C+0%2C+0%2C+0%29%3B%0A++++%7D%0A%0A++++.text+%7B%0A++++++margin-left%3A+55px%3B%0A++++++margin-right%3A+55px%3B%0A++++++margin-top%3A+300px%3B%0A++++++font-family%3A+%27Tinos%27%3B%0A++++++font-size%3A+10pt%3B%0A++++++line-height%3A+14pt%3B%0A++++%7D%0A%0A++++.red-text+%7B%0A++++++color%3A+red%3B%0A++++%7D%0A%0A++++.date+%7B%0A++++++float%3A+right%3B%0A++++%7D%0A%0A++++%23return-address-window+%7B%0A++++++position%3A+absolute%3B%0A++++++left%3A+.625in%3B%0A++++++top%3A+.5in%3B%0A++++++width%3A+3.25in%3B%0A++++++height%3A+.875in%3B%0A++++++background-color%3A+rgba%28255%2C+0%2C+0%2C+0%29%3B%0A++++%7D%0A%0A++++%23return-address-text+%7B%0A++++++position%3A+absolute%3B%0A++++++left%3A+.07in%3B%0A++++++top%3A+.34in%3B%0A++++++width%3A+2.05in%3B%0A++++++height%3A+.44in%3B%0A++++++font-size%3A+.11in%3B%0A++++%7D%0A++++%2F*+your+main+logo+should+have+dimensions+of+240x224+pixels.+*%2F%0A%0A++++%23main-logo+%7B%0A++++++position%3A+absolute%3B%0A++++++left%3A+542px%3B%0A++++++top%3A+23px%3B%0A++++++width%3A+2in%3B%0A++++++height%3A+.3in%3B%0A++++%7D%0A%0A++++%23recipient-address-window+%7B%0A++++++position%3A+absolute%3B%0A++++++left%3A+.625in%3B%0A++++++top%3A+1.7in%3B%0A++++++width%3A+4in%3B%0A++++++height%3A+1in%3B%0A++++++background-color%3A+rgba%28255%2C+0%2C+0%2C+0%29%3B%0A++++%7D%0A%0A++++%23recipient-address-text+%7B%0A++++++position%3A+absolute%3B%0A++++++left%3A+.07in%3B%0A++++++top%3A+.05in%3B%0A++++++width%3A+2.92in%3B%0A++++++height%3A+.9in%3B%0A++++%7D%0A%0A++++%23white-box+%7B%0A++++++background-color%3A+white%3B%0A++++++width%3A+3.15in%3B%0A++++++height%3A+2in%3B%0A++++++position%3A+absolute%3B%0A++++++left%3A+.6in%3B%0A++++++top%3A+.84in%3B%0A++++%7D%0A++%3C%2Fstyle%3E%0A%3C%2Fhead%3E%0A%0A%3Cbody%3E%0A++%3Cdiv+class%3D%22page%22%3E%0A++++%3Cdiv+class%3D%22page-content%22%3E%0A+++++%3C%21--+%3Cdiv+id%3D%22main-logo%22%3E%3Cimg+src%3D%22https%3A%2F%2Fs3.us-west-2.amazonaws.com%2Fpublic.lob.com%2FLob_For_Good%2Fvoter%2Baccess%2Bprogram%2B%281%29.png%22+width%3D%22240px%22%3E%3C%2Fdiv%3E+--%3E%0A++++++%3Cdiv+class%3D%22text%22%3E%0A++++++++%3Cbr%3E++++++++++++++++++++++++Senator+Michael+Bennet%2C%3Cbr%3E%3Cbr%3E%3Cbr%3E++++++++++++++++++++++++Please+make+GrubHub+free.%3Cbr%3E%3Cbr%3E%3Cbr%3E++++++++++++++++++++++++Your+constituent%2C+%3Cbr%3E%3Cbr%3E++++++++++++++++++++++++Nate%3Cbr%3E++++++++++++++++++++++++%0A++++++%3C%2Fdiv%3E%0A%0A++++++%3C%21--+This+div+represents+a+white+box+which+will+be+printed+on+top+of+all+artwork+to+hold+address+and+barcode+information.+Any+content+provided+underneath+this+area+will+be+covered.+--%3E%0A++++++%3Cdiv+id%3D%22white-box%22%3E%3C%2Fdiv%3E%0A%0A++++++%3Cdiv+id%3D%22return-address-window%22%3E%0A++++++++%3Cdiv+id%3D%22return-address-text%22%3E%0A++++++++%3C%2Fdiv%3E%0A++++++%3C%2Fdiv%3E%0A++++++%3Cdiv+id%3D%22recipient-address-window%22%3E%0A++++++++%3Cdiv+id%3D%22recipient-address-text%22%3E%0A++++++++%3C%2Fdiv%3E%0A++++++%3C%2Fdiv%3E%0A++++%3C%2Fdiv%3E%0A%0A%3C%2Fbody%3E%0A%0A%3C%2Fhtml%3E%0A++++++++++++++&merge_variables=%7B%22name%22%3A%22Albert%22%2C%22event%22%3A%22HTML+Letter+Conference%22%7D&metadata[campaign]=HTML+1.0&color=false
     headers:
       Accept:
       - "*/*"
@@ -166,7 +166,7 @@ http_interactions:
       Lob-Version:
       - ''
       Content-Length:
-      - '4145'
+      - '4170'
       Content-Type:
       - application/x-www-form-urlencoded
       Accept-Encoding:
@@ -189,7 +189,7 @@ http_interactions:
       X-Rate-Limit-Limit:
       - '150'
       X-Rate-Limit-Reset:
-      - '1642031234'
+      - '1643458683'
       Access-Control-Allow-Credentials:
       - 'true'
       Access-Control-Expose-Headers:
@@ -199,7 +199,7 @@ http_interactions:
       Accept-Ranges:
       - bytes
       Date:
-      - Wed, 12 Jan 2022 23:47:10 GMT
+      - Sat, 29 Jan 2022 12:17:58 GMT
       Vary:
       - origin,accept-encoding
       Strict-Transport-Security:
@@ -210,13 +210,13 @@ http_interactions:
       encoding: ASCII-8BIT
       string: |-
         {
-            "id": "ltr_8c43a303a641b0d6",
+            "id": "ltr_f02e4ed14be93119",
             "description": "Test letter",
             "metadata": {
                 "campaign": "HTML 1.0"
             },
             "to": {
-                "id": "adr_14fedfb0bec77e31",
+                "id": "adr_cbbb32154e6c723c",
                 "description": null,
                 "name": "BURGER KING",
                 "company": null,
@@ -229,14 +229,14 @@ http_interactions:
                 "address_zip": "80210-4402",
                 "address_country": "UNITED STATES",
                 "metadata": {},
-                "date_created": "2022-01-12T23:47:08.844Z",
-                "date_modified": "2022-01-12T23:47:08.844Z",
+                "date_created": "2022-01-29T12:17:57.401Z",
+                "date_modified": "2022-01-29T12:17:57.401Z",
                 "object": "address"
             },
             "from": {
-                "id": "adr_3b6323148c8b81e7",
+                "id": "adr_dd368073f995f5fd",
                 "description": null,
-                "name": "LAUREN HYATT",
+                "name": "MICHAL LEHNER",
                 "company": null,
                 "phone": null,
                 "email": null,
@@ -247,8 +247,8 @@ http_interactions:
                 "address_zip": "20190-5601",
                 "address_country": "UNITED STATES",
                 "metadata": {},
-                "date_created": "2022-01-12T23:47:09.303Z",
-                "date_modified": "2022-01-12T23:47:09.303Z",
+                "date_created": "2022-01-29T12:17:57.825Z",
+                "date_modified": "2022-01-29T12:17:57.825Z",
                 "object": "address"
             },
             "color": false,
@@ -259,7 +259,7 @@ http_interactions:
             "custom_envelope": null,
             "extra_service": null,
             "mail_type": "usps_first_class",
-            "url": "https://lob-assets.com/letters/ltr_8c43a303a641b0d6.pdf?version=v1&expires=1644623229&signature=rBYzQUmhnNcUUXLN5lNzWu3XKJX83yygguOD6-mE_v6K-epsmRpxDzvbB6SDlwM_rkf2kMO8kBylpGqW_InnBg",
+            "url": "https://lob-assets.com/letters/ltr_f02e4ed14be93119.pdf?version=v1&expires=1646050678&signature=K11YnVaAUaep-AMiJsqGNm-VmMo43DP9uKNKTN8J-3FzZtHRGZxZRE7Ke4I2XodxBwfdsaUjmdK5x2mclwajCg",
             "merge_variables": {
                 "name": "Albert",
                 "event": "HTML Letter Conference"
@@ -271,16 +271,16 @@ http_interactions:
             "tracking_events": [],
             "thumbnails": [
                 {
-                    "small": "https://lob-assets.com/letters/ltr_8c43a303a641b0d6_thumb_small_1.png?version=v1&expires=1644623229&signature=vdxYx5eusHeDZxLtgFbWKcJRzljRBRxBmHPCPpoODqq9y1QszJjYcfqKUdAIjJ1HCwsabDPmrzpBvHDc0OZ2CQ",
-                    "medium": "https://lob-assets.com/letters/ltr_8c43a303a641b0d6_thumb_medium_1.png?version=v1&expires=1644623229&signature=R707Ae6d0Nnmn3wGLUQOfTdJaYq6PR9r3jdslTF76s9mRKQeU5ACgz9ghNB2WzYNXg2gtHCxi0qHoF9icdf4CQ",
-                    "large": "https://lob-assets.com/letters/ltr_8c43a303a641b0d6_thumb_large_1.png?version=v1&expires=1644623229&signature=DbPgGkpARiSG7SypSIHiO8FOmpzPnjAlDAsASV_iA4PlYSyTs28F3_rDa5r-9KrwXNz5cvqzcrzigJgf2ooXAQ"
+                    "small": "https://lob-assets.com/letters/ltr_f02e4ed14be93119_thumb_small_1.png?version=v1&expires=1646050678&signature=n4C7XTZBnbe-xhasqWvFD5QNOuUzD6AhDx4H7FieecKcNdlWTuiBnI5v9v34wE3EcONZA-SCTBdJcgWEksk_Bg",
+                    "medium": "https://lob-assets.com/letters/ltr_f02e4ed14be93119_thumb_medium_1.png?version=v1&expires=1646050678&signature=-cJJsLZBCdkgBx9ef1sPSZx6nKwZJVexe2m0L3hQVvyd1wOLEYPxusH9KonrYgJf5ZknyMp4S2uCyPnH43LuCQ",
+                    "large": "https://lob-assets.com/letters/ltr_f02e4ed14be93119_thumb_large_1.png?version=v1&expires=1646050678&signature=zqaffYpy78uOrg5OhQ8w0mMY4zYuo-kyWzHjR1d-mzpeOsmnJ312t5td8UzE7h-2N-N1MC1WhE5CiTMi1VhqDQ"
                 }
             ],
-            "expected_delivery_date": "2022-01-21",
-            "date_created": "2022-01-12T23:47:09.879Z",
-            "date_modified": "2022-01-12T23:47:09.879Z",
-            "send_date": "2022-01-12T23:52:09.869Z",
+            "expected_delivery_date": "2022-02-07",
+            "date_created": "2022-01-29T12:17:58.248Z",
+            "date_modified": "2022-01-29T12:17:58.248Z",
+            "send_date": "2022-01-29T12:22:58.236Z",
             "object": "letter"
         }
-  recorded_at: Wed, 12 Jan 2022 23:47:09 GMT
+  recorded_at: Sat, 29 Jan 2022 12:17:58 GMT
 recorded_with: VCR 6.0.0

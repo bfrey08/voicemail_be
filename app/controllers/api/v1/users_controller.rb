@@ -2,9 +2,16 @@ class Api::V1::UsersController < ApplicationController
   def create
     user = User.find_by(email: params[:email])
 
-    user ||= User.create!(user_params)
-
-    render json: UserSerializer.new(user)
+    if user == nil && params[:password] == params[:password_confirmation]
+      user = User.create!(user_params)
+      render json: UserSerializer.new(user)
+    elsif user && params[:google_id] == nil
+      render json: { error: 'Email has already been registered'}, status: 422
+    elsif params[:password] != params[:password_confirmation]
+      render json: { error: 'Password and confirmation do not match'}, status: 422
+    else
+      render json: UserSerializer.new(user)
+    end
   end
 
   def show
@@ -25,7 +32,7 @@ class Api::V1::UsersController < ApplicationController
   private
 
   def user_params
-    params.permit(:email, :name, :google_id)
+    params.permit(:email, :name, :password, :password_confirmation, :google_id)
   end
 
   def address_params

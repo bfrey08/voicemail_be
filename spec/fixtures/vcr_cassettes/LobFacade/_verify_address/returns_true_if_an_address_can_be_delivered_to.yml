@@ -10,7 +10,7 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent:
-      - Lob/v1 RubyBindings/5.4.4
+      - Lob/v1 RubyBindings/5.4.6
       Lob-Version:
       - ''
       Content-Length:
@@ -37,7 +37,7 @@ http_interactions:
       X-Rate-Limit-Limit:
       - '300'
       X-Rate-Limit-Reset:
-      - '1643319553'
+      - '1643554022'
       Access-Control-Allow-Credentials:
       - 'true'
       Access-Control-Expose-Headers:
@@ -47,7 +47,7 @@ http_interactions:
       Accept-Ranges:
       - bytes
       Date:
-      - Thu, 27 Jan 2022 21:39:08 GMT
+      - Sun, 30 Jan 2022 14:46:57 GMT
       Vary:
       - origin,accept-encoding
       Strict-Transport-Security:
@@ -58,7 +58,7 @@ http_interactions:
       encoding: ASCII-8BIT
       string: |-
         {
-            "id": "us_ver_bc5396d1966446378478",
+            "id": "us_ver_6a63520d85aa490bb4ab",
             "recipient": "",
             "primary_line": "2110 S BROADWAY",
             "secondary_line": "",
@@ -113,5 +113,5 @@ http_interactions:
             },
             "object": "us_verification"
         }
-  recorded_at: Thu, 27 Jan 2022 21:39:08 GMT
+  recorded_at: Sun, 30 Jan 2022 14:46:57 GMT
 recorded_with: VCR 6.0.0

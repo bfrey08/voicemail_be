@@ -5,5 +5,6 @@ class RepresentativeSerializer
              :address_state,
              :address_zip,
              :name,
-             :title
+             :title,
+             :photo_url
 end

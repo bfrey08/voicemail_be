@@ -10,7 +10,7 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent:
-      - Lob/v1 RubyBindings/5.4.4
+      - Lob/v1 RubyBindings/5.4.6
       Lob-Version:
       - ''
       Content-Length:
@@ -37,7 +37,7 @@ http_interactions:
       X-Rate-Limit-Limit:
       - '300'
       X-Rate-Limit-Reset:
-      - '1643511072'
+      - '1643573884'
       Access-Control-Allow-Credentials:
       - 'true'
       Access-Control-Expose-Headers:
@@ -47,7 +47,7 @@ http_interactions:
       Accept-Ranges:
       - bytes
       Date:
-      - Sun, 30 Jan 2022 02:51:07 GMT
+      - Sun, 30 Jan 2022 20:17:59 GMT
       Vary:
       - origin,accept-encoding
       Strict-Transport-Security:
@@ -58,7 +58,7 @@ http_interactions:
       encoding: ASCII-8BIT
       string: |-
         {
-            "id": "us_ver_6b848f1eac1443939b85",
+            "id": "us_ver_c94f51beb10342379ece",
             "recipient": "",
             "primary_line": "VASADCASDGASDG",
             "secondary_line": "",
@@ -113,5 +113,5 @@ http_interactions:
             },
             "object": "us_verification"
         }
-  recorded_at: Sun, 30 Jan 2022 02:51:07 GMT
+  recorded_at: Sun, 30 Jan 2022 20:17:59 GMT
 recorded_with: VCR 6.0.0

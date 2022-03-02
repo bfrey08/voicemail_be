@@ -43,7 +43,6 @@ This project is based off Turing's consultancy project. More details can be foun
 ### <ins>Setup</ins>
 1. Fork and Clone the repo
 2. Install gem packages: `bundle install`
-3. Set-up Figaro: ``
 3. Setup the database: `rails db:{drop,create,migrate}`
 4. Run `bundle exec rspec` to test
 

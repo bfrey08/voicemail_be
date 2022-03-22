@@ -14,7 +14,7 @@ class LobFacade
   end
 
   def self.create_letter(letter_data)
-    letter = Letter.create!(
+    letter = Letter.create(
       user_id: letter_data[:user_id],
       to_name: letter_data[:to_address][:name],
       to_address_line1: letter_data[:to_address][:address_line1],

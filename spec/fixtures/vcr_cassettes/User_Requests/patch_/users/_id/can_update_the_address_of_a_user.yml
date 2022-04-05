@@ -33,11 +33,11 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Rate-Limit-Remaining:
-      - '297'
+      - '299'
       X-Rate-Limit-Limit:
       - '300'
       X-Rate-Limit-Reset:
-      - '1643573884'
+      - '1649189450'
       Access-Control-Allow-Credentials:
       - 'true'
       Access-Control-Expose-Headers:
@@ -47,7 +47,7 @@ http_interactions:
       Accept-Ranges:
       - bytes
       Date:
-      - Sun, 30 Jan 2022 20:18:03 GMT
+      - Tue, 05 Apr 2022 20:10:46 GMT
       Vary:
       - origin,accept-encoding
       Strict-Transport-Security:
@@ -58,13 +58,14 @@ http_interactions:
       encoding: ASCII-8BIT
       string: |-
         {
-            "id": "us_ver_e34f45b4c1cb47218c05",
+            "id": "us_ver_6c5a9a4e4e8141c2873a",
             "recipient": "",
             "primary_line": "8101 RALSTON RD",
             "secondary_line": "",
             "urbanization": "",
             "last_line": "ARVADA CO 80002-2439",
             "deliverability": "deliverable",
+            "valid_address": true,
             "components": {
                 "primary_number": "8101",
                 "street_predirection": "",
@@ -90,8 +91,8 @@ http_interactions:
                 "county_fips": "08059",
                 "carrier_route": "C004",
                 "carrier_route_type": "city_delivery",
-                "latitude": 39.803088,
-                "longitude": -105.087868
+                "latitude": 39.803049,
+                "longitude": -105.087851
             },
             "deliverability_analysis": {
                 "dpv_confirmation": "Y",
@@ -113,5 +114,5 @@ http_interactions:
             },
             "object": "us_verification"
         }
-  recorded_at: Sun, 30 Jan 2022 20:18:03 GMT
+  recorded_at: Tue, 05 Apr 2022 20:10:46 GMT
 recorded_with: VCR 6.0.0

@@ -37,7 +37,7 @@ http_interactions:
       X-Rate-Limit-Limit:
       - '300'
       X-Rate-Limit-Reset:
-      - '1643554022'
+      - '1649189442'
       Access-Control-Allow-Credentials:
       - 'true'
       Access-Control-Expose-Headers:
@@ -47,7 +47,7 @@ http_interactions:
       Accept-Ranges:
       - bytes
       Date:
-      - Sun, 30 Jan 2022 14:46:57 GMT
+      - Tue, 05 Apr 2022 20:10:38 GMT
       Vary:
       - origin,accept-encoding
       Strict-Transport-Security:
@@ -58,13 +58,14 @@ http_interactions:
       encoding: ASCII-8BIT
       string: |-
         {
-            "id": "us_ver_6a63520d85aa490bb4ab",
+            "id": "us_ver_3c4f078a31034f4d9305",
             "recipient": "",
             "primary_line": "2110 S BROADWAY",
             "secondary_line": "",
             "urbanization": "",
             "last_line": "DENVER CO 80210-4402",
             "deliverability": "deliverable",
+            "valid_address": true,
             "components": {
                 "primary_number": "2110",
                 "street_predirection": "S",
@@ -90,8 +91,8 @@ http_interactions:
                 "county_fips": "08031",
                 "carrier_route": "C007",
                 "carrier_route_type": "city_delivery",
-                "latitude": 39.677046,
-                "longitude": -104.987178
+                "latitude": 39.678239,
+                "longitude": -104.987146
             },
             "deliverability_analysis": {
                 "dpv_confirmation": "Y",
@@ -113,5 +114,5 @@ http_interactions:
             },
             "object": "us_verification"
         }
-  recorded_at: Sun, 30 Jan 2022 14:46:57 GMT
+  recorded_at: Tue, 05 Apr 2022 20:10:37 GMT
 recorded_with: VCR 6.0.0

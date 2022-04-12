@@ -20,6 +20,7 @@ describe 'Letters API' do
       from_name: 'Nate Brown'
     }
   end
+
   context 'when valid attributes entered' do
     it 'can create a letter', :vcr do
       post '/api/v1/letters', params: valid_attributes
@@ -39,6 +40,7 @@ describe 'Letters API' do
       expect(confirmation[:data][:attributes][:preview_url]).to be nil
     end
   end
+
   context 'when required attributes are missing' do
     it 'errors out and does not create a letter' do
       valid_attributes.delete(:body)
@@ -59,6 +61,7 @@ describe 'Letters API' do
       expect(confirmation[:errors]).to include("From name can't be blank")
     end
   end
+
   context 'when letter id is valid' do
     it 'can delete a letter from database' do
       letter = create(:letter)
@@ -72,6 +75,7 @@ describe 'Letters API' do
       expect(Letter.count).to eq(0)
     end
   end
+
   context 'when letter id is invalid' do
     it 'errors out' do
       letter = create(:letter)
@@ -107,6 +111,7 @@ describe 'Letters API' do
       expect(confirmation[:data].first[:attributes][:body]).to be_a(String)
     end
   end
+
   context "when invalid user's id is used" do
     it 'errors out' do
       user = create(:user)
@@ -122,16 +127,52 @@ describe 'Letters API' do
       expect(confirmation[:errors]).to include('No letters with that user id could be found. Check that you entered it correctly')
     end
   end
-  it "can send a letter based on a user's id", :vcr do
-      post '/api/v1/letters', params: valid_attributes
-      post "/api/v1/letters/send", params: {email: nate.email}
 
-      confirmation = JSON.parse(response.body, symbolize_names: true)
+  context "when valid user's id is used" do
+    it "can send a letter based on a user's id", :vcr do
+        post '/api/v1/letters', params: valid_attributes
+        post "/api/v1/letters/send", params: {email: nate.email}
 
-      expect(response).to be_successful
+        confirmation = JSON.parse(response.body, symbolize_names: true)
 
-      expect(confirmation[:data][:attributes][:send_date]).not_to be nil
-      expect(confirmation[:data][:attributes][:delivery_date]).not_to be nil
-      expect(confirmation[:data][:attributes][:preview_url]).not_to be nil
+        expect(response).to be_successful
+
+        expect(confirmation[:data][:attributes][:send_date]).not_to be nil
+        expect(confirmation[:data][:attributes][:delivery_date]).not_to be nil
+        expect(confirmation[:data][:attributes][:preview_url]).not_to be nil
+    end
   end
+
+  context "when valid data is used for preview letter" do
+    it "can fetch a PDF preview URL", :vcr do
+        post '/api/v1/letters/preview', params: valid_attributes
+
+        preview_data = JSON.parse(response.body, symbolize_names: true)
+
+        expect(response).to be_successful
+
+        expect(preview_data[:data][:attributes][:send_date]).not_to be nil
+        expect(preview_data[:data][:attributes][:delivery_date]).not_to be nil
+        expect(preview_data[:data][:attributes][:preview_url]).to include("https://lob-assets.com/letters/")
+    end
+  end
+
+  context "when to address is missing for preview letter" do
+    it "errors out", :vcr do
+        valid_attributes.delete(:to_address_line1)
+        valid_attributes.delete(:to_address_city)
+
+        post '/api/v1/letters/preview', params: valid_attributes
+
+        expect(response).not_to be_successful
+
+        error = JSON.parse(response.body, symbolize_names: true)
+
+        expect(error[:data]).to be nil
+        expect(error[:message]).to eq("Your letter could not be sent.")
+        expect(error[:errors]).to eq(["To address line1 can't be blank", "To address city can't be blank"])
+    end
+  end
+
+
 end

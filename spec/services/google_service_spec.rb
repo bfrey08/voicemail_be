@@ -3,6 +3,7 @@ require 'rails_helper'
 describe GoogleService do
   describe 'find_representative' do
     it 'finds all representatives based on a given address', :vcr do
+      Rails.cache.clear
       expected = GoogleService.find_representatives('1551 Utica Street, Denver, CO 80204')
 
       expect(expected).to be_a(Hash)

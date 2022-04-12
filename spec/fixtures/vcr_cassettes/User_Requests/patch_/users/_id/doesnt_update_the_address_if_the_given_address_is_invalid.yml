@@ -33,11 +33,11 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Rate-Limit-Remaining:
-      - '296'
+      - '298'
       X-Rate-Limit-Limit:
       - '300'
       X-Rate-Limit-Reset:
-      - '1643554022'
+      - '1649189451'
       Access-Control-Allow-Credentials:
       - 'true'
       Access-Control-Expose-Headers:
@@ -47,7 +47,7 @@ http_interactions:
       Accept-Ranges:
       - bytes
       Date:
-      - Sun, 30 Jan 2022 14:47:01 GMT
+      - Tue, 05 Apr 2022 20:10:48 GMT
       Vary:
       - origin,accept-encoding
       Strict-Transport-Security:
@@ -58,13 +58,14 @@ http_interactions:
       encoding: ASCII-8BIT
       string: |-
         {
-            "id": "us_ver_252c63867e614376957a",
+            "id": "us_ver_d297a4a8ba454021a6a8",
             "recipient": "",
             "primary_line": "KDCSPKSPZXCA",
             "secondary_line": "VFDCLPS",
             "urbanization": "",
             "last_line": "LVCPADSLVCPALSPAC VK 06432",
             "deliverability": "undeliverable",
+            "valid_address": false,
             "components": {
                 "primary_number": "",
                 "street_predirection": "",
@@ -113,5 +114,5 @@ http_interactions:
             },
             "object": "us_verification"
         }
-  recorded_at: Sun, 30 Jan 2022 14:47:01 GMT
+  recorded_at: Tue, 05 Apr 2022 20:10:48 GMT
 recorded_with: VCR 6.0.0

@@ -147,4 +147,44 @@ describe LobFacade do
       end
     end
   end
+
+  describe '.preview' do
+    context 'when given valid letter data' do
+      it 'returns a letter object with a PDF preview URL', :vcr do
+        nate = create(:user)
+        letter_body = "
+                        Senator Michael Bennet,<br><br>
+                        Please make GrubHub free.<br><br>
+                        Your constituent, <br>
+                        Nate
+                        "
+
+        to_address = {
+          name: 'Burger King',
+          address_line1: '2110 S Broadway',
+          address_city: 'Denver',
+          address_state: 'CO',
+          address_country: 'US',
+          address_zip: '80210'
+        }
+
+        from_address = {
+          name: nate.name,
+          address_line1: nate.address_line1,
+          address_city: nate.address_city,
+          address_state: nate.address_state,
+          address_country: 'US',
+          address_zip: nate.address_zip
+        }
+
+        preview_letter = LobFacade.preview({ to_address: to_address, from_address: from_address, letter_body: letter_body,
+                                           user_id: nate.id })
+
+        expect(preview_letter.id).to be_an Integer
+        expect(preview_letter.to_address_line1).to be_a String
+        expect(preview_letter.from_address_line1).to be_a String
+        expect(preview_letter.preview_url).to include("https://lob-assets.com/letters/")
+      end
+    end
+  end
 end

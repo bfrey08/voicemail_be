@@ -2,13 +2,13 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.googleapis.com/civicinfo/v2/representatives?address=11913%20Freedom%20Dr,%20Reston,%20VA,%2020190&key=<google_key>
+    uri: https://www.googleapis.com/civicinfo/v2/representatives?address=11913%20Freedom%20Dr,%20Reston,%20VA,%2020190&fields=offices,officials&key=<google_key>
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - Faraday v2.0.1
+      - Faraday v2.1.0
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -25,7 +25,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Sat, 29 Jan 2022 12:18:00 GMT
+      - Tue, 05 Apr 2022 20:12:49 GMT
       Server:
       - ESF
       Cache-Control:
@@ -45,43 +45,6 @@ http_interactions:
       encoding: ASCII-8BIT
       string: |
         {
-          "normalizedInput": {
-            "line1": "11913 Freedom Drive",
-            "city": "Reston",
-            "state": "VA",
-            "zip": "20190"
-          },
-          "kind": "civicinfo#representativeInfoResponse",
-          "divisions": {
-            "ocd-division/country:us/state:va/county:fairfax": {
-              "name": "Fairfax County",
-              "officeIndices": [
-                7
-              ]
-            },
-            "ocd-division/country:us": {
-              "name": "United States",
-              "officeIndices": [
-                0,
-                1
-              ]
-            },
-            "ocd-division/country:us/state:va/cd:11": {
-              "name": "Virginia's 11th congressional district",
-              "officeIndices": [
-                3
-              ]
-            },
-            "ocd-division/country:us/state:va": {
-              "name": "Virginia",
-              "officeIndices": [
-                2,
-                4,
-                5,
-                6
-              ]
-            }
-          },
           "offices": [
             {
               "name": "President of the United States",
@@ -413,6 +376,16 @@ http_interactions:
                 "https://www.governor.virginia.gov/",
                 "https://en.wikipedia.org/wiki/Glenn_Youngkin"
               ],
+              "channels": [
+                {
+                  "type": "Facebook",
+                  "id": "governorva"
+                },
+                {
+                  "type": "Twitter",
+                  "id": "GovernorVA"
+                }
+              ],
               "geocodingSummaries": [
                 {
                   "queryString": "P.O. Box 1475, Richmond, VA 23218",
@@ -439,9 +412,19 @@ http_interactions:
               "emails": [
                 "ltgov@ltgov.virginia.gov"
               ],
+              "channels": [
+                {
+                  "type": "Facebook",
+                  "id": "WinsomeSears"
+                },
+                {
+                  "type": "Twitter",
+                  "id": "WinsomeSears"
+                }
+              ],
               "geocodingSummaries": [
                 {
-                  "queryString": "P.O. Box 1475 Richmond, VA 23218",
+                  "queryString": "P.O. Box 1195 Richmond, VA 23218",
                   "featureId": {
                     "cellId": "9921730467215818321",
                     "fprint": "16012891047689081230"
@@ -469,6 +452,12 @@ http_interactions:
               "urls": [
                 "https://www.oag.state.va.us/",
                 "https://en.wikipedia.org/wiki/Jason_Miyares"
+              ],
+              "channels": [
+                {
+                  "type": "Facebook",
+                  "id": "jasonmiyaresforvirginia"
+                }
               ],
               "geocodingSummaries": [
                 {
@@ -518,5 +507,5 @@ http_interactions:
             }
           ]
         }
-  recorded_at: Sat, 29 Jan 2022 12:18:00 GMT
+  recorded_at: Tue, 05 Apr 2022 20:12:49 GMT
 recorded_with: VCR 6.0.0

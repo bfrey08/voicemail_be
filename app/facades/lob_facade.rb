@@ -36,6 +36,7 @@ class LobFacade
   def self.send_letter(user_email)
     lob = LobService.client
     user = User.find_by(email: user_email)
+
     letter = user.letters.order(:created_at).last
 
     letter_data = {

@@ -70,7 +70,7 @@ describe 'User Requests' do
       }
 
       post '/api/v1/users', params: user_params
-
+      require 'pry'; binding.pry
       expect(response).to have_http_status(:success)
 
       user = User.find_by(email: 'test@exaple.com')

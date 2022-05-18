@@ -37,7 +37,7 @@ http_interactions:
       X-Rate-Limit-Limit:
       - '300'
       X-Rate-Limit-Reset:
-      - '1649189442'
+      - '1652882792'
       Access-Control-Allow-Credentials:
       - 'true'
       Access-Control-Expose-Headers:
@@ -47,7 +47,7 @@ http_interactions:
       Accept-Ranges:
       - bytes
       Date:
-      - Tue, 05 Apr 2022 20:10:38 GMT
+      - Wed, 18 May 2022 14:06:28 GMT
       Vary:
       - origin,accept-encoding
       Strict-Transport-Security:
@@ -58,7 +58,7 @@ http_interactions:
       encoding: ASCII-8BIT
       string: |-
         {
-            "id": "us_ver_3c4f078a31034f4d9305",
+            "id": "us_ver_da67a40124274974abf8",
             "recipient": "",
             "primary_line": "2110 S BROADWAY",
             "secondary_line": "",
@@ -114,5 +114,5 @@ http_interactions:
             },
             "object": "us_verification"
         }
-  recorded_at: Tue, 05 Apr 2022 20:10:37 GMT
+  recorded_at: Wed, 18 May 2022 14:06:27 GMT
 recorded_with: VCR 6.0.0

@@ -51,12 +51,8 @@ describe LobFacade do
 
         from_address = {
           name: nate.name,
-          address_line1: nate.address_line1,
-          address_city: nate.address_city,
-          address_state: nate.address_state,
           address_country: 'US',
-          address_zip: nate.address_zip
-        }
+        }.merge(nate.address_hash)
 
         letter = LobFacade.create_letter({ to_address: to_address, from_address: from_address, letter_body: letter_body,
                                            user_id: nate.id })
@@ -86,12 +82,8 @@ describe LobFacade do
 
         from_address = {
           name: nate.name,
-          address_line1: nate.address_line1,
-          address_city: nate.address_city,
-          address_state: nate.address_state,
-          address_country: 'US',
-          address_zip: nate.address_zip
-        }
+          address_country: 'US'
+        }.merge(nate.address_hash)
 
         letter = LobFacade.create_letter({ to_address: to_address, from_address: from_address, user: nate })
 
@@ -123,12 +115,8 @@ describe LobFacade do
 
         from_address = {
           name: nate.name,
-          address_line1: nate.address_line1,
-          address_city: nate.address_city,
-          address_state: nate.address_state,
-          address_country: 'US',
-          address_zip: nate.address_zip
-        }
+          address_country: 'US'
+        }.merge(nate.address_hash)
 
         saved_letter_1 = LobFacade.create_letter({ to_address: to_address, from_address: from_address, letter_body: "Hey hey hey",
                                            user_id: nate.id })
@@ -170,12 +158,8 @@ describe LobFacade do
 
         from_address = {
           name: nate.name,
-          address_line1: nate.address_line1,
-          address_city: nate.address_city,
-          address_state: nate.address_state,
-          address_country: 'US',
-          address_zip: nate.address_zip
-        }
+          address_country: 'US'
+        }.merge(nate.address_hash)
 
         preview_letter = LobFacade.preview({ to_address: to_address, from_address: from_address, letter_body: letter_body,
                                            user_id: nate.id })

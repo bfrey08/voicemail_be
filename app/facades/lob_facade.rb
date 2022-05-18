@@ -14,21 +14,15 @@ class LobFacade
   end
 
   def self.create_letter(letter_data)
+    user = User.find(letter_data[:user_id])
+    
     letter = Letter.create(
-      user_id: letter_data[:user_id],
+      user_id: user.id,
       to_name: letter_data[:to_address][:name],
-      to_address_line1: letter_data[:to_address][:address_line1],
-      to_address_line2: letter_data[:to_address][:address_line2],
-      to_address_city: letter_data[:to_address][:address_city],
-      to_address_state: letter_data[:to_address][:address_state],
-      to_address_zip: letter_data[:to_address][:address_zip],
       from_name: letter_data[:from_address][:name],
-      from_address_line1: letter_data[:from_address][:address_line1],
-      from_address_line2: letter_data[:from_address][:address_line2],
-      from_address_city: letter_data[:from_address][:address_city],
-      from_address_state: letter_data[:from_address][:address_state],
-      from_address_zip: letter_data[:from_address][:address_zip],
-      body: letter_data[:letter_body]
+      body: letter_data[:letter_body],
+      to: to_address(letter_data),
+      from: user.address
     )
     letter
   end
@@ -38,10 +32,17 @@ class LobFacade
     user = User.find_by(email: user_email)
 
     letter = user.letters.order(:created_at).last
+    to_address = Address.find(letter.to_id)
 
     letter_data = {
-      to_address: {name: letter.to_name, address_line1: letter.to_address_line1, address_city: letter.to_address_city, address_state: letter.to_address_state, address_country: "US", address_zip: letter.to_address_zip},
-      from_address: {name: letter.from_name, address_line1: letter.from_address_line1, address_city: letter.from_address_city, address_state: letter.from_address_state, address_country: "US", address_zip: letter.from_address_zip},
+      to_address: {
+                    name: letter.to_name,
+                    address_country: "US", 
+      }.merge(to_address.address_hash),
+      from_address: {
+                      name: letter.from_name,
+                      address_country: "US"
+      }.merge(user.address_hash),
       letter_body: letter.body,
       user_id: user.id}
   
@@ -67,22 +68,15 @@ class LobFacade
 
   def self.preview(letter_data)
     lob = LobService.test_client
+    user = User.find(letter_data[:user_id])
 
     letter = Letter.new(
-      user_id: letter_data[:user_id],
+      user_id: user.id,
       to_name: letter_data[:to_address][:name],
-      to_address_line1: letter_data[:to_address][:address_line1],
-      to_address_line2: letter_data[:to_address][:address_line2],
-      to_address_city: letter_data[:to_address][:address_city],
-      to_address_state: letter_data[:to_address][:address_state],
-      to_address_zip: letter_data[:to_address][:address_zip],
       from_name: letter_data[:from_address][:name],
-      from_address_line1: letter_data[:from_address][:address_line1],
-      from_address_line2: letter_data[:from_address][:address_line2],
-      from_address_city: letter_data[:from_address][:address_city],
-      from_address_state: letter_data[:from_address][:address_state],
-      from_address_zip: letter_data[:from_address][:address_zip],
-      body: letter_data[:letter_body]
+      body: letter_data[:letter_body],
+      to: to_address(letter_data),
+      from: user.address
     )
     if letter.save
       to_address = lob.addresses.create(letter_data[:to_address])
@@ -106,144 +100,155 @@ class LobFacade
     letter
   end
 
-  def self.html_formatter(letter_body)
-    letter_body.gsub!("\n", '<br>')
+  private
+    def self.to_address(letter_data)
+      Address.create!(
+        address_line1: letter_data[:to_address][:address_line1],
+        address_line2: letter_data[:to_address][:address_line2],
+        address_city: letter_data[:to_address][:address_city],
+        address_state: letter_data[:to_address][:address_state],
+        address_zip: letter_data[:to_address][:address_zip]
+      )
+    end
 
-    html = %{
-              <html>
+    def self.html_formatter(letter_body)
+      letter_body.gsub!("\n", '<br>')
 
-<head>
-  <meta charset="UTF-8">
-  <link href="https://fonts.googleapis.com/css?family=Tinos" rel="stylesheet" type="text/css">
-  <title>Letter to Representative</title>
-  <style>
-    *,
-    *:before,
-    *:after {
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      box-sizing: border-box;
-    }
+      html = %{
+                <html>
 
-    body {
-      width: 8.5in;
-      height: 11in;
-      margin: 0;
-      padding: 0;
-    }
+  <head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Tinos" rel="stylesheet" type="text/css">
+    <title>Letter to Representative</title>
+    <style>
+      *,
+      *:before,
+      *:after {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+      }
 
-    .page {
-      page-break-after: always;
-      position: relative;
-      width: 8.5in;
-      height: 11in;
-    }
+      body {
+        width: 8.5in;
+        height: 11in;
+        margin: 0;
+        padding: 0;
+      }
 
-    .page-content {
-      position: absolute;
-      width: 8.125in;
-      height: 10.625in;
-      left: 0.1875in;
-      top: 0.1875in;
-      background-color: rgba(0, 0, 0, 0);
-    }
+      .page {
+        page-break-after: always;
+        position: relative;
+        width: 8.5in;
+        height: 11in;
+      }
 
-    .text {
-      margin-left: 55px;
-      margin-right: 55px;
-      margin-top: 300px;
-      font-family: 'Tinos';
-      font-size: 10pt;
-      line-height: 14pt;
-    }
+      .page-content {
+        position: absolute;
+        width: 8.125in;
+        height: 10.625in;
+        left: 0.1875in;
+        top: 0.1875in;
+        background-color: rgba(0, 0, 0, 0);
+      }
 
-    .red-text {
-      color: red;
-    }
+      .text {
+        margin-left: 55px;
+        margin-right: 55px;
+        margin-top: 300px;
+        font-family: 'Tinos';
+        font-size: 10pt;
+        line-height: 14pt;
+      }
 
-    .date {
-      float: right;
-    }
+      .red-text {
+        color: red;
+      }
 
-    #return-address-window {
-      position: absolute;
-      left: .625in;
-      top: .5in;
-      width: 3.25in;
-      height: .875in;
-      background-color: rgba(255, 0, 0, 0);
-    }
+      .date {
+        float: right;
+      }
 
-    #return-address-text {
-      position: absolute;
-      left: .07in;
-      top: .34in;
-      width: 2.05in;
-      height: .44in;
-      font-size: .11in;
-    }
-    /* your main logo should have dimensions of 240x224 pixels. */
+      #return-address-window {
+        position: absolute;
+        left: .625in;
+        top: .5in;
+        width: 3.25in;
+        height: .875in;
+        background-color: rgba(255, 0, 0, 0);
+      }
 
-    #main-logo {
-      position: absolute;
-      left: 542px;
-      top: 23px;
-      width: 2in;
-      height: .3in;
-    }
+      #return-address-text {
+        position: absolute;
+        left: .07in;
+        top: .34in;
+        width: 2.05in;
+        height: .44in;
+        font-size: .11in;
+      }
+      /* your main logo should have dimensions of 240x224 pixels. */
 
-    #recipient-address-window {
-      position: absolute;
-      left: .625in;
-      top: 1.7in;
-      width: 4in;
-      height: 1in;
-      background-color: rgba(255, 0, 0, 0);
-    }
+      #main-logo {
+        position: absolute;
+        left: 542px;
+        top: 23px;
+        width: 2in;
+        height: .3in;
+      }
 
-    #recipient-address-text {
-      position: absolute;
-      left: .07in;
-      top: .05in;
-      width: 2.92in;
-      height: .9in;
-    }
+      #recipient-address-window {
+        position: absolute;
+        left: .625in;
+        top: 1.7in;
+        width: 4in;
+        height: 1in;
+        background-color: rgba(255, 0, 0, 0);
+      }
 
-    #white-box {
-      background-color: white;
-      width: 3.15in;
-      height: 2in;
-      position: absolute;
-      left: .6in;
-      top: .84in;
-    }
-  </style>
-</head>
+      #recipient-address-text {
+        position: absolute;
+        left: .07in;
+        top: .05in;
+        width: 2.92in;
+        height: .9in;
+      }
 
-<body>
-  <div class="page">
-    <div class="page-content">
-     <!-- <div id="main-logo"><img src="https://s3.us-west-2.amazonaws.com/public.lob.com/Lob_For_Good/voter+access+program+(1).png" width="240px"></div> -->
-      <div class="text">
-        #{letter_body}
-      </div>
+      #white-box {
+        background-color: white;
+        width: 3.15in;
+        height: 2in;
+        position: absolute;
+        left: .6in;
+        top: .84in;
+      }
+    </style>
+  </head>
 
-      <!-- This div represents a white box which will be printed on top of all artwork to hold address and barcode information. Any content provided underneath this area will be covered. -->
-      <div id="white-box"></div>
+  <body>
+    <div class="page">
+      <div class="page-content">
+      <!-- <div id="main-logo"><img src="https://s3.us-west-2.amazonaws.com/public.lob.com/Lob_For_Good/voter+access+program+(1).png" width="240px"></div> -->
+        <div class="text">
+          #{letter_body}
+        </div>
 
-      <div id="return-address-window">
-        <div id="return-address-text">
+        <!-- This div represents a white box which will be printed on top of all artwork to hold address and barcode information. Any content provided underneath this area will be covered. -->
+        <div id="white-box"></div>
+
+        <div id="return-address-window">
+          <div id="return-address-text">
+          </div>
+        </div>
+        <div id="recipient-address-window">
+          <div id="recipient-address-text">
+          </div>
         </div>
       </div>
-      <div id="recipient-address-window">
-        <div id="recipient-address-text">
-        </div>
-      </div>
-    </div>
 
-</body>
+  </body>
 
-</html>
-              }
-  end
+  </html>
+                }
+    end
 end

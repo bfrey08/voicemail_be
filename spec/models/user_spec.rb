@@ -12,7 +12,7 @@ RSpec.describe User, type: :model do
     it "should concatenate the user's address attributes into a single line" do
       user = create(:user)
 
-      expect(user.full_address).to eq("#{user.address_line1}, #{user.address_city}, #{user.address_state}, #{user.address_zip}")
+      expect(user.full_address).to eq("#{user.address.full_address}")
     end
   end
 end

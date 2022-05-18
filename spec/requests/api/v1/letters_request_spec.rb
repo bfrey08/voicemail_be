@@ -26,7 +26,7 @@ describe 'Letters API' do
       post '/api/v1/letters', params: valid_attributes
 
       confirmation = JSON.parse(response.body, symbolize_names: true)
-
+      
       expect(response).to be_successful
 
       expect(confirmation[:data]).to have_key(:id)

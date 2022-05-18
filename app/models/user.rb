@@ -10,6 +10,6 @@ class User < ApplicationRecord
   end
 
   def address_hash
-    address.attributes
+    address.address_hash.except(:user_id, :created_at, :updated_at)
   end
 end

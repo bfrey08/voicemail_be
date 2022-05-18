@@ -54,8 +54,12 @@ describe LobFacade do
           address_country: 'US',
         }.merge(nate.address_hash)
 
-        letter = LobFacade.create_letter({ to_address: to_address, from_address: from_address, letter_body: letter_body,
-                                           user_id: nate.id })
+        letter = LobFacade.create_letter({ 
+                                           to_address: to_address,
+                                           from_address: from_address,
+                                           letter_body: letter_body,
+                                           user_id: nate.id 
+                                         })
 
         expect(letter).to be_a(Letter)
         expect(letter.send_date).to be nil
@@ -85,7 +89,11 @@ describe LobFacade do
           address_country: 'US'
         }.merge(nate.address_hash)
 
-        letter = LobFacade.create_letter({ to_address: to_address, from_address: from_address, user: nate })
+        letter = LobFacade.create_letter({ 
+                                            to_address: to_address,
+                                            from_address: from_address,
+                                            user_id: nate.id
+                                         })
 
         expect(letter.id).to be nil
         expect(letter.errors.messages[:body]).to eq(["can't be blank"])
@@ -165,8 +173,8 @@ describe LobFacade do
                                            user_id: nate.id })
 
         expect(preview_letter.id).to be_an Integer
-        expect(preview_letter.to_address_line1).to be_a String
-        expect(preview_letter.from_address_line1).to be_a String
+        expect(preview_letter.to_name).to be_a String
+        expect(preview_letter.from_name).to be_a String
         expect(preview_letter.preview_url).to include("https://lob-assets.com/letters/")
       end
     end

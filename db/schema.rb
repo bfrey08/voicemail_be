@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_18_145812) do
+ActiveRecord::Schema.define(version: 2022_05_18_154805) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,16 +28,6 @@ ActiveRecord::Schema.define(version: 2022_05_18_145812) do
   end
 
   create_table "letters", force: :cascade do |t|
-    t.string "to_address_line1"
-    t.string "to_address_line2"
-    t.string "to_address_city"
-    t.string "to_address_state"
-    t.string "to_address_zip"
-    t.string "from_address_line1"
-    t.string "from_address_line2"
-    t.string "from_address_city"
-    t.string "from_address_state"
-    t.string "from_address_zip"
     t.string "body"
     t.bigint "user_id"
     t.datetime "created_at", null: false
@@ -47,6 +37,10 @@ ActiveRecord::Schema.define(version: 2022_05_18_145812) do
     t.string "delivery_date"
     t.string "send_date"
     t.string "preview_url"
+    t.bigint "to_id"
+    t.bigint "from_id"
+    t.index ["from_id"], name: "index_letters_on_from_id"
+    t.index ["to_id"], name: "index_letters_on_to_id"
     t.index ["user_id"], name: "index_letters_on_user_id"
   end
 
@@ -60,5 +54,7 @@ ActiveRecord::Schema.define(version: 2022_05_18_145812) do
   end
 
   add_foreign_key "addresses", "users"
+  add_foreign_key "letters", "addresses", column: "from_id"
+  add_foreign_key "letters", "addresses", column: "to_id"
   add_foreign_key "letters", "users"
 end

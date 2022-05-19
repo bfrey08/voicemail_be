@@ -73,6 +73,11 @@ describe 'Letters API' do
       expect(response).to be_successful
 
       expect(Address.count).to eq(0)
+
+      confirmation = JSON.parse(response.body, symbolize_names: true)
+
+      expect(confirmation).to have_key(:message)
+      expect(confirmation[:message]).to eq("Address deleted successfully")
     end
   end
 
@@ -90,6 +95,36 @@ describe 'Letters API' do
 
       expect(Address.count).to eq(1)
       expect(confirmation[:error]).to eq("Couldn't find Address with 'id'=invalid_id")
+    end
+  end
+
+  describe 'patch /users/:id' do
+    it 'can update the address' do
+      address = create(:address)
+
+      address_params = {
+        address_line1: '8101 Ralston Rd',
+        address_line2: '',
+        address_city: 'Denver',
+        address_state: 'CO',
+        address_zip: '80002'
+      }
+
+      expect(address.address_line1).to eq('11913 Freedom Dr')
+      expect(address.address_line2).to eq('#35')
+      expect(address.address_city).to eq('Reston')
+      expect(address.address_state).to eq('VA')
+      expect(address.address_zip).to eq('20190')
+
+      patch "/api/v1/addresses/#{address.id}", params: address_params
+
+      address.reload
+
+      expect(address.address_line1).to eq '8101 Ralston Rd'
+      expect(address.address_line2).to eq ''
+      expect(address.address_city).to eq 'Denver'
+      expect(address.address_state).to eq 'CO'
+      expect(address.address_zip).to eq '80002'
     end
   end
 end

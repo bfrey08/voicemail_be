@@ -26,7 +26,7 @@ describe 'User Requests' do
     it 'returns an error if the user is not found' do
       create(:user)
 
-      get "/api/v1/users/#{User.all.last.id + 1}"
+      get "/api/v1/users/invalid_id"
 
       expect(response).to have_http_status 404
 

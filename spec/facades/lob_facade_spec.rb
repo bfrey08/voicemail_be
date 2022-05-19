@@ -49,10 +49,7 @@ describe LobFacade do
           address_zip: '80210'
         }
 
-        from_address = {
-          name: nate.name,
-          address_country: 'US',
-        }.merge(nate.address_hash)
+        from_address = nate.address_hash
 
         letter = LobFacade.create_letter({ 
                                            to_address: to_address,
@@ -121,10 +118,7 @@ describe LobFacade do
           address_zip: '80210'
         }
 
-        from_address = {
-          name: nate.name,
-          address_country: 'US'
-        }.merge(nate.address_hash)
+        from_address = nate.address_hash
 
         saved_letter_1 = LobFacade.create_letter({ to_address: to_address, from_address: from_address, letter_body: "Hey hey hey",
                                            user_id: nate.id })

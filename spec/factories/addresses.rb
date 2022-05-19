@@ -6,6 +6,5 @@ FactoryBot.define do
     address_city { 'Reston' }
     address_state { 'VA' }
     address_zip { '20190' }
-    user
   end
 end

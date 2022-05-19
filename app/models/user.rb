@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_many :letters
-  has_one :address
+  has_one :address, dependent: :destroy
   validates :email, presence: true, uniqueness: true
 
   has_secure_password(validations: false)

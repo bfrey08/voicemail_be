@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
+      resources :addresses, only: [:create, :update, :destroy]
       resources :sessions, only: [:create]
       post '/letters/send', to: "letters#send_letter"
       resources :letters, only: %i[create destroy]

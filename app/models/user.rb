@@ -14,6 +14,7 @@ class User < ApplicationRecord
   end
 
   def add_address(address)
+    address.add_name(user: self)
     self.address = address
   end
 end

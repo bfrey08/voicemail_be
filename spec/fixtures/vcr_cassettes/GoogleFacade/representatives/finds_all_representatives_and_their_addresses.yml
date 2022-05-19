@@ -25,7 +25,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Wed, 18 May 2022 14:06:26 GMT
+      - Thu, 19 May 2022 13:41:11 GMT
       Server:
       - ESF
       Cache-Control:
@@ -169,7 +169,8 @@ http_interactions:
                 "(202) 456-1111"
               ],
               "urls": [
-                "https://www.whitehouse.gov/"
+                "https://www.whitehouse.gov/",
+                "https://en.wikipedia.org/wiki/Joe_Biden"
               ],
               "channels": [
                 {
@@ -205,7 +206,8 @@ http_interactions:
                 "(202) 456-1111"
               ],
               "urls": [
-                "https://www.whitehouse.gov/"
+                "https://www.whitehouse.gov/",
+                "https://en.wikipedia.org/wiki/Kamala_Harris"
               ],
               "channels": [
                 {
@@ -241,7 +243,8 @@ http_interactions:
                 "(202) 224-2023"
               ],
               "urls": [
-                "https://warner.senate.gov/"
+                "https://warner.senate.gov/",
+                "https://en.wikipedia.org/wiki/Mark_Warner"
               ],
               "photoUrl": "http://bioguide.congress.gov/bioguide/photo/W/W000805.jpg",
               "channels": [
@@ -286,7 +289,8 @@ http_interactions:
                 "(202) 224-4024"
               ],
               "urls": [
-                "https://www.kaine.senate.gov/"
+                "https://www.kaine.senate.gov/",
+                "https://en.wikipedia.org/wiki/Tim_Kaine"
               ],
               "photoUrl": "http://bioguide.congress.gov/bioguide/photo/K/K000384.jpg",
               "channels": [
@@ -331,7 +335,8 @@ http_interactions:
                 "(202) 225-1492"
               ],
               "urls": [
-                "https://connolly.house.gov/"
+                "https://connolly.house.gov/",
+                "https://en.wikipedia.org/wiki/Gerry_Connolly"
               ],
               "photoUrl": "http://bioguide.congress.gov/bioguide/photo/C/C001078.jpg",
               "channels": [
@@ -368,7 +373,8 @@ http_interactions:
                 "(804) 786-2211"
               ],
               "urls": [
-                "https://www.governor.virginia.gov/"
+                "https://www.governor.virginia.gov/",
+                "https://en.wikipedia.org/wiki/Glenn_Youngkin"
               ],
               "channels": [
                 {
@@ -400,7 +406,8 @@ http_interactions:
                 "(804) 786-2078"
               ],
               "urls": [
-                "https://www.ltgov.virginia.gov/"
+                "https://www.ltgov.virginia.gov/",
+                "https://en.wikipedia.org/wiki/Winsome_Sears"
               ],
               "emails": [
                 "ltgov@ltgov.virginia.gov"
@@ -443,7 +450,8 @@ http_interactions:
                 "(804) 786-2071"
               ],
               "urls": [
-                "https://www.oag.state.va.us/"
+                "https://www.oag.state.va.us/",
+                "https://en.wikipedia.org/wiki/Jason_Miyares"
               ],
               "channels": [
                 {
@@ -499,5 +507,5 @@ http_interactions:
             }
           ]
         }
-  recorded_at: Wed, 18 May 2022 14:06:26 GMT
+  recorded_at: Thu, 19 May 2022 13:41:11 GMT
 recorded_with: VCR 6.0.0

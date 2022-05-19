@@ -4,8 +4,6 @@ class LetterSerializer
              :delivery_date,
              :body,
              :user_id,
-             :to_name,
-             :from_name,
              :preview_url
 
   attribute :to do |letter|

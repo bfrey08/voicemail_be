@@ -11,8 +11,7 @@ class LobFacade
   def self.create_letter(letter_data)
     user = User.find(letter_data[:user_id])
 
-    letter = Letter.create(letter_details(user: user, letter_data: letter_data))
-    letter
+    Letter.create(letter_details(user: user, letter_data: letter_data))
   end
 
   def self.send_letter(user_email)
@@ -23,16 +22,11 @@ class LobFacade
     to_address = Address.find(letter.to_id)
 
     letter_data = {
-      to_address: {
-                    name: letter.to_name,
-                    address_country: "US", 
-      }.merge(to_address.address_hash),
-      from_address: {
-                      name: letter.from_name,
-                      address_country: "US"
-      }.merge(user.address_hash),
-      letter_body: letter.body,
-      user_id: user.id}
+                    to_address: to_address.address_hash,
+                    from_address: user.address_hash,
+                    letter_body: letter.body,
+                    user_id: user.id
+                  }
   
     to_address, from_address = create_lob_addresses(lob: lob, letter_data: letter_data)
 
@@ -57,7 +51,7 @@ class LobFacade
     letter = Letter.new(letter_details(user: user, letter_data: letter_data))
 
     if letter.save
-      to_address, from_address = create_lob_addresses(lob: lob, letter_data: letter_data)
+      to_address, from_address = create_lob_addresses(lob: lob, letter_data: letter_data.except(:user_id))
 
       confirmation = lob.letters.create(lob_details(
                                                     to_address: to_address,
@@ -75,7 +69,7 @@ class LobFacade
 
   private
     def self.to_address(letter_data)
-      Address.create!(letter_data[:to_address].except(:name, :address_country))
+      Address.create!(letter_data[:to_address].except(:address_country))
     end
 
     def self.create_lob_addresses(lob:, letter_data:)

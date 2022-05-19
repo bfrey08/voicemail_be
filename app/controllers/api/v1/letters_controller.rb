@@ -32,10 +32,12 @@ class Api::V1::LettersController < ApplicationController
   end
 
   def preview
+    user = User.find(params[:user_id])
+
     letter = LobFacade.preview(
       {
         to_address: to_address,
-        from_address: from_address,
+        from_address: user.address_hash,
         letter_body: params[:body],
         user_id: params[:user_id]
       }

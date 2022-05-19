@@ -144,8 +144,6 @@ module AddressFormattable
     def letter_details(user:, letter_data:)
       {
         user_id: user.id,
-        to_name: letter_data[:to_address][:name],
-        from_name: letter_data[:from_address][:name],
         body: letter_data[:letter_body],
         to: to_address(letter_data),
         from: user.address

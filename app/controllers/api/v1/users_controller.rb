@@ -20,11 +20,12 @@ class Api::V1::UsersController < ApplicationController
 
   def update
     user = User.find(params[:id])
-    
-    if LobFacade.verify_address(address_params) == true
-      address = Address.create!(address_params)
+
+    if LobFacade.verify_address(address_params)
+      address_params_with_name = address_params.merge({name: user.name})
+      address = Address.create!(address_params_with_name)
       user.add_address(address)
-      
+
       render json: UserSerializer.new(user)
     else
       render json: UserSerializer.verification_failed, status: 422
@@ -38,6 +39,6 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def address_params
-    params.permit(:address_line1, :address_line2, :address_city, :address_state, :address_zip)
+    params.permit(:name, :address_line1, :address_line2, :address_city, :address_state, :address_zip)
   end
 end

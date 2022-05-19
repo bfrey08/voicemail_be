@@ -164,17 +164,14 @@ describe LobFacade do
           address_zip: '80210'
         }
 
-        from_address = {
-          name: nate.name,
-          address_country: 'US'
-        }.merge(nate.address_hash)
+        from_address = nate.address_hash
 
         preview_letter = LobFacade.preview({ to_address: to_address, from_address: from_address, letter_body: letter_body,
                                            user_id: nate.id })
 
         expect(preview_letter.id).to be_an Integer
-        expect(preview_letter.to_name).to be_a String
-        expect(preview_letter.from_name).to be_a String
+        expect(preview_letter.to.name).to be_a String
+        expect(preview_letter.from.name).to be_a String
         expect(preview_letter.preview_url).to include("https://lob-assets.com/letters/")
       end
     end

@@ -78,7 +78,7 @@ describe 'Letters API' do
 
   context 'when letter id is invalid' do
     it 'errors out' do
-      letter = create(:letter)
+      create(:letter)
 
       expect(Letter.count).to eq(1)
 
@@ -94,7 +94,7 @@ describe 'Letters API' do
   end
 
   context "when valid user's id is used" do
-    it 'can retrieve a users letters (index)' do
+    it "can retrieve a user's letters (index)" do
       user = create(:user)
       create_list(:letter, 5, user: user)
 
@@ -172,6 +172,4 @@ describe 'Letters API' do
         expect(error[:error]).to eq("Validation failed: Address line1 can't be blank, Address city can't be blank")
     end
   end
-
-
 end

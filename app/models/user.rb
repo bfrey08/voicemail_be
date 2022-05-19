@@ -12,4 +12,8 @@ class User < ApplicationRecord
   def address_hash
     address.address_hash.except(:user_id, :created_at, :updated_at)
   end
+
+  def add_address(address)
+    self.address = address
+  end
 end

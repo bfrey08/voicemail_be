@@ -19,7 +19,7 @@ describe 'sessions requests' do
       body = JSON.parse(response.body, symbolize_names: true)
       attributes = body[:data][:attributes]
 
-      expect(attributes.count).to eq 8
+      expect(attributes.count).to eq 4
       expect(attributes[:email]).to eq @user.email
       expect(attributes[:name]).to eq @user.name
     end

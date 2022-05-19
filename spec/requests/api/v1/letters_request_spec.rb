@@ -169,8 +169,7 @@ describe 'Letters API' do
         error = JSON.parse(response.body, symbolize_names: true)
 
         expect(error[:data]).to be nil
-        expect(error[:message]).to eq("Your letter could not be sent.")
-        expect(error[:errors]).to eq(["To address line1 can't be blank", "To address city can't be blank"])
+        expect(error[:error]).to eq("Validation failed: Address line1 can't be blank, Address city can't be blank")
     end
   end
 

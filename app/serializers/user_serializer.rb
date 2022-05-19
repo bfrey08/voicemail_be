@@ -3,12 +3,11 @@ class UserSerializer
 
   attributes :email,
              :name,
-             :google_id,
-             :address_line1,
-             :address_line2,
-             :address_city,
-             :address_state,
-             :address_zip
+             :google_id
+
+  attribute :address do |user|
+    user.address
+  end
 
   def self.verification_failed
     {

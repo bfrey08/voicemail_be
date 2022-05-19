@@ -15,7 +15,7 @@ class LobFacade
 
   def self.create_letter(letter_data)
     user = User.find(letter_data[:user_id])
-    
+
     letter = Letter.create(
       user_id: user.id,
       to_name: letter_data[:to_address][:name],
@@ -78,6 +78,7 @@ class LobFacade
       to: to_address(letter_data),
       from: user.address
     )
+
     if letter.save
       to_address = lob.addresses.create(letter_data[:to_address])
       from_address = lob.addresses.create(letter_data[:from_address])
@@ -102,13 +103,7 @@ class LobFacade
 
   private
     def self.to_address(letter_data)
-      Address.create!(
-        address_line1: letter_data[:to_address][:address_line1],
-        address_line2: letter_data[:to_address][:address_line2],
-        address_city: letter_data[:to_address][:address_city],
-        address_state: letter_data[:to_address][:address_state],
-        address_zip: letter_data[:to_address][:address_zip]
-      )
+      Address.create!(letter_data[:to_address].except(:name, :address_country))
     end
 
     def self.html_formatter(letter_body)

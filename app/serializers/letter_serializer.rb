@@ -7,9 +7,14 @@ class LetterSerializer
              :to_name,
              :from_name,
              :preview_url
-             
-  belongs_to :to
-  belongs_to :from
+
+  attribute :to do |letter|
+    letter.to
+  end
+
+  attribute :from do |letter|
+    letter.from
+  end
 
   def self.errors(errors)
     {

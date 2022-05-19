@@ -125,6 +125,16 @@ describe 'Letters API' do
       expect(address.address_city).to eq 'Denver'
       expect(address.address_state).to eq 'CO'
       expect(address.address_zip).to eq '80002'
+
+      body = JSON.parse(response.body, symbolize_names: true)
+      attributes = body[:data][:attributes]
+
+      expect(attributes[:name]).to eq address.name
+      expect(attributes[:address_line1]).to eq address.address_line1
+      expect(attributes[:address_line2]).to eq address.address_line2
+      expect(attributes[:address_city]).to eq address.address_city
+      expect(attributes[:address_state]).to eq address.address_state
+      expect(attributes[:address_zip]).to eq address.address_zip
     end
   end
 end

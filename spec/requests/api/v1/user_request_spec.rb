@@ -179,7 +179,7 @@ describe 'User Requests' do
       expect(attributes[:address][:address_zip]).to eq user.address.address_zip
     end
 
-    it 'doesnt update the address if the given address is invalid', :vcr do
+    it 'does not update the address if the given address is invalid', :vcr do
       user = create(:user)
       address_params = {
         address_line1: 'kdcspkspzxca',

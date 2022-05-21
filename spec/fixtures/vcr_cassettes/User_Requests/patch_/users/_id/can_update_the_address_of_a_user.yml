@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.lob.com/v1/us_verifications
     body:
       encoding: UTF-8
-      string: city=Denver&state=CO&primary_line=8101+Ralston+Rd&secondary_line=&zip_code=80002
+      string: primary_line=8101+Ralston+Rd&secondary_line=&city=Denver&state=CO&zip_code=80002
     headers:
       Accept:
       - "*/*"
@@ -37,7 +37,7 @@ http_interactions:
       X-Rate-Limit-Limit:
       - '300'
       X-Rate-Limit-Reset:
-      - '1649189450'
+      - '1653151469'
       Access-Control-Allow-Credentials:
       - 'true'
       Access-Control-Expose-Headers:
@@ -47,7 +47,7 @@ http_interactions:
       Accept-Ranges:
       - bytes
       Date:
-      - Tue, 05 Apr 2022 20:10:46 GMT
+      - Sat, 21 May 2022 16:44:24 GMT
       Vary:
       - origin,accept-encoding
       Strict-Transport-Security:
@@ -58,7 +58,7 @@ http_interactions:
       encoding: ASCII-8BIT
       string: |-
         {
-            "id": "us_ver_6c5a9a4e4e8141c2873a",
+            "id": "us_ver_7ccf1a32512840e59688",
             "recipient": "",
             "primary_line": "8101 RALSTON RD",
             "secondary_line": "",
@@ -114,5 +114,5 @@ http_interactions:
             },
             "object": "us_verification"
         }
-  recorded_at: Tue, 05 Apr 2022 20:10:46 GMT
+  recorded_at: Sat, 21 May 2022 16:44:24 GMT
 recorded_with: VCR 6.0.0

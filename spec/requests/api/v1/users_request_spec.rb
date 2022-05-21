@@ -12,21 +12,21 @@ describe 'User Requests' do
       body = JSON.parse(response.body, symbolize_names: true)
       attributes = body[:data][:attributes]
 
-      expect(attributes.count).to eq 8
+      expect(attributes.count).to eq 4
       expect(attributes[:email]).to eq user.email
       expect(attributes[:name]).to eq user.name
       expect(attributes[:google_id]).to eq user.google_id
-      expect(attributes[:address_line1]).to eq user.address_line1
-      expect(attributes[:address_line2]).to eq user.address_line2
-      expect(attributes[:address_city]).to eq user.address_city
-      expect(attributes[:address_state]).to eq user.address_state
-      expect(attributes[:address_zip]).to eq user.address_zip
+      expect(attributes[:address][:address_line1]).to eq user.address.address_line1
+      expect(attributes[:address][:address_line2]).to eq user.address.address_line2
+      expect(attributes[:address][:address_city]).to eq user.address.address_city
+      expect(attributes[:address][:address_state]).to eq user.address.address_state
+      expect(attributes[:address][:address_zip]).to eq user.address.address_zip
     end
 
     it 'returns an error if the user is not found' do
       create(:user)
 
-      get "/api/v1/users/#{User.all.last.id + 1}"
+      get "/api/v1/users/invalid_id"
 
       expect(response).to have_http_status 404
 
@@ -55,7 +55,7 @@ describe 'User Requests' do
       body = JSON.parse(response.body, symbolize_names: true)
       attributes = body[:data][:attributes]
 
-      expect(attributes.count).to eq 8
+      expect(attributes.count).to eq 4
       expect(attributes[:email]).to eq user.email
       expect(attributes[:name]).to eq user.name
       expect(attributes[:google_id]).to eq user.google_id
@@ -82,7 +82,7 @@ describe 'User Requests' do
       body = JSON.parse(response.body, symbolize_names: true)
       attributes = body[:data][:attributes]
 
-      expect(attributes.count).to eq 8
+      expect(attributes.count).to eq 4
       expect(attributes[:email]).to eq user.email
       expect(attributes[:name]).to eq user.name
     end
@@ -96,7 +96,7 @@ describe 'User Requests' do
       attributes = body[:data][:attributes]
 
       expect(body[:data][:id]).to eq user.id.to_s
-      expect(attributes.count).to eq 8
+      expect(attributes.count).to eq 4
       expect(attributes[:email]).to eq user.email
       expect(attributes[:name]).to eq user.name
       expect(attributes[:google_id]).to eq user.google_id
@@ -159,27 +159,27 @@ describe 'User Requests' do
 
       user.reload
 
-      expect(user.address_line1).to eq '8101 Ralston Rd'
-      expect(user.address_line2).to eq ''
-      expect(user.address_city).to eq 'Denver'
-      expect(user.address_state).to eq 'CO'
-      expect(user.address_zip).to eq '80002'
+      expect(user.address.address_line1).to eq '8101 Ralston Rd'
+      expect(user.address.address_line2).to eq ''
+      expect(user.address.address_city).to eq 'Denver'
+      expect(user.address.address_state).to eq 'CO'
+      expect(user.address.address_zip).to eq '80002'
 
       body = JSON.parse(response.body, symbolize_names: true)
       attributes = body[:data][:attributes]
 
-      expect(attributes.count).to eq 8
+      expect(attributes.count).to eq 4
       expect(attributes[:email]).to eq user.email
       expect(attributes[:name]).to eq user.name
       expect(attributes[:google_id]).to eq user.google_id
-      expect(attributes[:address_line1]).to eq user.address_line1
-      expect(attributes[:address_line2]).to eq user.address_line2
-      expect(attributes[:address_city]).to eq user.address_city
-      expect(attributes[:address_state]).to eq user.address_state
-      expect(attributes[:address_zip]).to eq user.address_zip
+      expect(attributes[:address][:address_line1]).to eq user.address.address_line1
+      expect(attributes[:address][:address_line2]).to eq user.address.address_line2
+      expect(attributes[:address][:address_city]).to eq user.address.address_city
+      expect(attributes[:address][:address_state]).to eq user.address.address_state
+      expect(attributes[:address][:address_zip]).to eq user.address.address_zip
     end
 
-    it 'doesnt update the address if the given address is invalid', :vcr do
+    it 'does not update the address if the given address is invalid', :vcr do
       user = create(:user)
       address_params = {
         address_line1: 'kdcspkspzxca',
@@ -193,11 +193,11 @@ describe 'User Requests' do
 
       user.reload
 
-      expect(user.address_line1).to_not eq 'kdcspkspzxca'
-      expect(user.address_line2).to_not eq 'vfdclps'
-      expect(user.address_city).to_not eq 'lvcpadslvcpalspac'
-      expect(user.address_state).to_not eq 'vk'
-      expect(user.address_zip).to_not eq '06432'
+      expect(user.address.address_line1).to_not eq 'kdcspkspzxca'
+      expect(user.address.address_line2).to_not eq 'vfdclps'
+      expect(user.address.address_city).to_not eq 'lvcpadslvcpalspac'
+      expect(user.address.address_state).to_not eq 'vk'
+      expect(user.address.address_zip).to_not eq '06432'
 
       body = JSON.parse(response.body, symbolize_names: true)
 

@@ -32,19 +32,17 @@ class Api::V1::LettersController < ApplicationController
   end
 
   def preview
+    user = User.find(params[:user_id])
+
     letter = LobFacade.preview(
       {
         to_address: to_address,
-        from_address: from_address,
+        from_address: user.address_hash,
         letter_body: params[:body],
         user_id: params[:user_id]
       }
     )
-    if letter.id.nil?
-      render json: LetterSerializer.errors(letter.errors.full_messages), status: 422
-    else
-      render json: LetterSerializer.new(letter)
-    end
+    render json: LetterSerializer.new(letter)
   end
 
   def send_letter

@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.lob.com/v1/us_verifications
     body:
       encoding: UTF-8
-      string: city=sadmvodmc&state=pwefoqckds&primary_line=vasadcasdgasdg&secondary_line&zip_code=43951
+      string: primary_line=vasadcasdgasdg&secondary_line&city=sadmvodmc&state=pwefoqckds&zip_code=43951
     headers:
       Accept:
       - "*/*"
@@ -37,7 +37,7 @@ http_interactions:
       X-Rate-Limit-Limit:
       - '300'
       X-Rate-Limit-Reset:
-      - '1649189443'
+      - '1653151446'
       Access-Control-Allow-Credentials:
       - 'true'
       Access-Control-Expose-Headers:
@@ -47,7 +47,7 @@ http_interactions:
       Accept-Ranges:
       - bytes
       Date:
-      - Tue, 05 Apr 2022 20:10:38 GMT
+      - Sat, 21 May 2022 16:44:02 GMT
       Vary:
       - origin,accept-encoding
       Strict-Transport-Security:
@@ -58,7 +58,7 @@ http_interactions:
       encoding: ASCII-8BIT
       string: |-
         {
-            "id": "us_ver_39dbfe37fb6c4afebd9f",
+            "id": "us_ver_55fcbb3a98de41aa8c9e",
             "recipient": "",
             "primary_line": "VASADCASDGASDG",
             "secondary_line": "",
@@ -114,5 +114,5 @@ http_interactions:
             },
             "object": "us_verification"
         }
-  recorded_at: Tue, 05 Apr 2022 20:10:38 GMT
+  recorded_at: Sat, 21 May 2022 16:44:02 GMT
 recorded_with: VCR 6.0.0

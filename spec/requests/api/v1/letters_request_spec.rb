@@ -9,15 +9,9 @@ describe 'Letters API' do
       to_address_city: 'Denver',
       to_address_state: 'CO',
       to_address_zip: '80210',
-      from_address_line1: '515 S Broadway',
-      from_address_line2: '',
-      from_address_city: 'Denver',
-      from_address_state: 'CO',
-      from_address_zip: '80209',
       body: 'Please make Grubhub free',
       user_id: nate.id,
-      to_name: 'Senator Michael Bennet',
-      from_name: 'Nate Brown'
+      to_name: 'Senator Michael Bennet'
     }
   end
 
@@ -32,8 +26,11 @@ describe 'Letters API' do
       expect(confirmation[:data]).to have_key(:id)
       expect(confirmation[:data][:id]).to be_a(String)
 
-      expect(confirmation[:data][:attributes]).to have_key(:to_name)
-      expect(confirmation[:data][:attributes][:to_name]).to be_a(String)
+      expect(confirmation[:data][:attributes]).to have_key(:to)
+      expect(confirmation[:data][:attributes][:to][:name]).to be_a(String)
+
+      expect(confirmation[:data][:attributes]).to have_key(:from)
+      expect(confirmation[:data][:attributes][:from][:name]).to be_a(String)
 
       expect(confirmation[:data][:attributes][:send_date]).to be nil
       expect(confirmation[:data][:attributes][:delivery_date]).to be nil
@@ -44,8 +41,7 @@ describe 'Letters API' do
   context 'when required attributes are missing' do
     it 'errors out and does not create a letter' do
       valid_attributes.delete(:body)
-      valid_attributes.delete(:to_name)
-      valid_attributes.delete(:from_name)
+      
       invalid_attributes = valid_attributes
       post '/api/v1/letters', params: invalid_attributes
 
@@ -53,12 +49,8 @@ describe 'Letters API' do
 
       expect(response).not_to be_successful
 
-      expect(confirmation).to have_key(:message)
-      expect(confirmation[:message]).to eq('Your letter could not be sent.')
-
-      expect(confirmation[:errors]).to include("Body can't be blank")
-      expect(confirmation[:errors]).to include("To name can't be blank")
-      expect(confirmation[:errors]).to include("From name can't be blank")
+      expect(confirmation[:message]).to eq("Your letter could not be sent.")
+      expect(confirmation[:errors]).to eq(["Body can't be blank"])
     end
   end
 
@@ -78,7 +70,7 @@ describe 'Letters API' do
 
   context 'when letter id is invalid' do
     it 'errors out' do
-      letter = create(:letter)
+      create(:letter)
 
       expect(Letter.count).to eq(1)
 
@@ -94,7 +86,7 @@ describe 'Letters API' do
   end
 
   context "when valid user's id is used" do
-    it 'can retrieve a users letters (index)' do
+    it "can retrieve a user's letters (index)" do
       user = create(:user)
       create_list(:letter, 5, user: user)
 
@@ -169,10 +161,7 @@ describe 'Letters API' do
         error = JSON.parse(response.body, symbolize_names: true)
 
         expect(error[:data]).to be nil
-        expect(error[:message]).to eq("Your letter could not be sent.")
-        expect(error[:errors]).to eq(["To address line1 can't be blank", "To address city can't be blank"])
+        expect(error[:error]).to eq("Validation failed: Address line1 can't be blank, Address city can't be blank")
     end
   end
-
-
 end

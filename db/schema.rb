@@ -10,36 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_27_202730) do
+ActiveRecord::Schema.define(version: 2022_05_19_121559) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "letters", force: :cascade do |t|
-    t.string "to_address_line1"
-    t.string "to_address_line2"
-    t.string "to_address_city"
-    t.string "to_address_state"
-    t.string "to_address_zip"
-    t.string "from_address_line1"
-    t.string "from_address_line2"
-    t.string "from_address_city"
-    t.string "from_address_state"
-    t.string "from_address_zip"
-    t.string "body"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "to_name"
-    t.string "from_name"
-    t.string "delivery_date"
-    t.string "send_date"
-    t.string "preview_url"
-    t.index ["user_id"], name: "index_letters_on_user_id"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "name"
+  create_table "addresses", force: :cascade do |t|
     t.string "address_line1"
     t.string "address_line2"
     t.string "address_city"
@@ -47,10 +23,38 @@ ActiveRecord::Schema.define(version: 2022_01_27_202730) do
     t.string "address_zip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.string "name"
+    t.string "address_country", default: "US"
+    t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
+
+  create_table "letters", force: :cascade do |t|
+    t.string "body"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "delivery_date"
+    t.string "send_date"
+    t.string "preview_url"
+    t.bigint "to_id"
+    t.bigint "from_id"
+    t.index ["from_id"], name: "index_letters_on_from_id"
+    t.index ["to_id"], name: "index_letters_on_to_id"
+    t.index ["user_id"], name: "index_letters_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "email"
     t.string "google_id"
     t.string "password_digest"
   end
 
+  add_foreign_key "addresses", "users"
+  add_foreign_key "letters", "addresses", column: "from_id"
+  add_foreign_key "letters", "addresses", column: "to_id"
   add_foreign_key "letters", "users"
 end

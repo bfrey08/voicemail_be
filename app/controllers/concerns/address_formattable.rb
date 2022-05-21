@@ -164,10 +164,10 @@ module AddressFormattable
 
     def verification_details(address:)
       {
-        city: address[:address_city],
-        state: address[:address_state],
         primary_line: address[:address_line1],
         secondary_line: address[:address_line2],
+        city: address[:address_city],
+        state: address[:address_state],
         zip_code: address[:address_zip]
       }
     end

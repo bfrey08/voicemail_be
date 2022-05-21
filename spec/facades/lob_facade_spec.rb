@@ -4,7 +4,7 @@ describe LobFacade do
   describe '.verify_address' do
     it 'returns true if an address can be delivered to', :vcr do
       address = {
-        name: 'Burger King',
+        recipient: 'Burger King',
         address_line1: '2110 S Broadway',
         address_city: 'Denver',
         address_state: 'CO',
@@ -17,7 +17,7 @@ describe LobFacade do
 
     it 'returns false if an address cant be delivered to', :vcr do
       address = {
-        name: 'alspdgfpcalsd',
+        recipient: 'alspdgfpcalsd',
         address_line1: 'vasadcasdgasdg',
         address_city: 'sadmvodmc',
         address_state: 'pwefoqckds',

@@ -15,14 +15,17 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def show
-    render json: UserSerializer.new(User.find(params[:id]))
+    user = User.find(params[:id])
+    
+    render json: UserSerializer.new(user)
   end
 
   def update
     user = User.find(params[:id])
-
-    if LobFacade.verify_address(address_params)
-      address_params_with_name = address_params.merge({name: user.name})
+    address_params_with_name = address_params.merge({recipient: user.name})
+    
+    if LobFacade.verify_address(address_params_with_name)
+      address_params_with_name[:name] = address_params_with_name.delete :recipient
       address = Address.create!(address_params_with_name)
       user.add_address(address)
 

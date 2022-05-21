@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.lob.com/v1/us_verifications
     body:
       encoding: UTF-8
-      string: city=lvcpadslvcpalspac&state=vk&primary_line=kdcspkspzxca&secondary_line=vfdclps&zip_code=06432
+      string: primary_line=kdcspkspzxca&secondary_line=vfdclps&city=lvcpadslvcpalspac&state=vk&zip_code=06432
     headers:
       Accept:
       - "*/*"
@@ -37,7 +37,7 @@ http_interactions:
       X-Rate-Limit-Limit:
       - '300'
       X-Rate-Limit-Reset:
-      - '1652967687'
+      - '1653151468'
       Access-Control-Allow-Credentials:
       - 'true'
       Access-Control-Expose-Headers:
@@ -47,7 +47,7 @@ http_interactions:
       Accept-Ranges:
       - bytes
       Date:
-      - Thu, 19 May 2022 13:41:23 GMT
+      - Sat, 21 May 2022 16:44:25 GMT
       Vary:
       - origin,accept-encoding
       Strict-Transport-Security:
@@ -58,7 +58,7 @@ http_interactions:
       encoding: ASCII-8BIT
       string: |-
         {
-            "id": "us_ver_2c3da928d4194119ba97",
+            "id": "us_ver_17b14ae39883467f8973",
             "recipient": "",
             "primary_line": "KDCSPKSPZXCA",
             "secondary_line": "VFDCLPS",
@@ -114,5 +114,5 @@ http_interactions:
             },
             "object": "us_verification"
         }
-  recorded_at: Thu, 19 May 2022 13:41:23 GMT
+  recorded_at: Sat, 21 May 2022 16:44:24 GMT
 recorded_with: VCR 6.0.0
